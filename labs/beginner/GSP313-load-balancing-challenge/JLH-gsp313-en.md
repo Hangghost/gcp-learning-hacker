@@ -16,8 +16,8 @@ This section provides the commands needed to complete each task. Follow these st
 ### Initial Variable Settings
 ```bash
 # Set your region and zone
-export REGION="us-central1"  # Please set according to your lab environment
-export ZONE="us-central1-a"  # Please set according to your lab environment
+export REGION=""  # Please set according to your lab environment
+export ZONE=""  # Please set according to your lab environment
 export PROJECT_ID=$(gcloud config get-value project)
 ```
 
