@@ -106,3 +106,5 @@ temp/
 *.tar.gz
 *.rar
 *.7z
+
+.cursor/
