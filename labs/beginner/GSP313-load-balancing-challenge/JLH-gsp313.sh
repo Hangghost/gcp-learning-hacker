@@ -77,7 +77,7 @@ cleanup() {
 
     # Clean up firewall rules
     print_step "Cleaning up firewall rules..."
-    gcloud compute firewall-rules delete allow-http --quiet 2>/dev/null || true
+    gcloud compute firewall-rules delete www-firewall-network-lb --quiet 2>/dev/null || true
 
     print_status "Cleanup completed!"
 }
@@ -122,50 +122,46 @@ main() {
     gcloud compute instances create web1 \
       --zone=$ZONE \
       --machine-type=e2-small \
-      --network=default \
       --tags=network-lb-tag \
       --image-family=debian-12 \
       --image-project=debian-cloud \
-      --metadata startup-script="#!/bin/bash
+      --metadata startup-script='#!/bin/bash
 apt-get update
 apt-get install apache2 -y
 service apache2 restart
-echo '<h3>Web Server: web1</h3>' | tee /var/www/html/index.html"
+echo "<h3>Web Server: web1</h3>" | tee /var/www/html/index.html'
     check_command "web1 instance creation"
 
     print_status "Creating web2 instance..."
     gcloud compute instances create web2 \
       --zone=$ZONE \
       --machine-type=e2-small \
-      --network=default \
       --tags=network-lb-tag \
       --image-family=debian-12 \
       --image-project=debian-cloud \
-      --metadata startup-script="#!/bin/bash
+      --metadata startup-script='#!/bin/bash
 apt-get update
 apt-get install apache2 -y
 service apache2 restart
-echo '<h3>Web Server: web2</h3>' | tee /var/www/html/index.html"
+echo "<h3>Web Server: web2</h3>" | tee /var/www/html/index.html'
     check_command "web2 instance creation"
 
     print_status "Creating web3 instance..."
     gcloud compute instances create web3 \
       --zone=$ZONE \
       --machine-type=e2-small \
-      --network=default \
       --tags=network-lb-tag \
       --image-family=debian-12 \
       --image-project=debian-cloud \
-      --metadata startup-script="#!/bin/bash
+      --metadata startup-script='#!/bin/bash
 apt-get update
 apt-get install apache2 -y
 service apache2 restart
-echo '<h3>Web Server: web3</h3>' | tee /var/www/html/index.html"
+echo "<h3>Web Server: web3</h3>" | tee /var/www/html/index.html'
     check_command "web3 instance creation"
 
     print_status "Creating firewall rule to allow HTTP traffic..."
-    gcloud compute firewall-rules create allow-http \
-      --network=default \
+    gcloud compute firewall-rules create www-firewall-network-lb \
       --allow=tcp:80 \
       --target-tags=network-lb-tag
     check_command "Firewall rule creation"
@@ -182,10 +178,14 @@ echo '<h3>Web Server: web3</h3>' | tee /var/www/html/index.html"
       --region=$REGION
     check_command "Static IP creation"
 
+    print_status "Creating HTTP health check..."
+    gcloud compute http-health-checks create basic-check
+    check_command "HTTP health check creation"
+
     print_status "Creating target pool..."
     gcloud compute target-pools create www-pool \
       --region=$REGION \
-      --http-health-check
+      --http-health-check=basic-check
     check_command "Target pool creation"
 
     print_status "Adding instances to target pool..."
@@ -212,16 +212,23 @@ echo '<h3>Web Server: web3</h3>' | tee /var/www/html/index.html"
 
     print_status "Creating instance template..."
     gcloud compute instance-templates create lb-backend-template \
-      --machine-type=e2-medium \
+      --region=$REGION \
       --network=default \
+      --subnet=default \
       --tags=allow-health-check \
+      --machine-type=e2-medium \
       --image-family=debian-12 \
       --image-project=debian-cloud \
-      --metadata startup-script="#!/bin/bash
+      --metadata startup-script='#!/bin/bash
 apt-get update
 apt-get install apache2 -y
-service apache2 restart
-echo '<h3>Web Server: lb-backend-group</h3>' | tee /var/www/html/index.html"
+a2ensite default-ssl
+a2enmod ssl
+vm_hostname="$(curl -H "Metadata-Flavor:Google" \
+http://169.254.169.254/computeMetadata/v1/instance/name)"
+echo "Page served from: $vm_hostname" | \
+tee /var/www/html/index.html
+systemctl restart apache2'
     check_command "Instance template creation"
 
     print_status "Creating managed instance group..."
@@ -243,7 +250,7 @@ echo '<h3>Web Server: lb-backend-group</h3>' | tee /var/www/html/index.html"
 
     print_status "Creating health check..."
     gcloud compute health-checks create http http-basic-check \
-      --port 80
+      --port=80
     check_command "Health check creation"
 
     print_status "Setting named port for instance group..."

@@ -29,45 +29,41 @@ export PROJECT_ID=$(gcloud config get-value project)
 gcloud compute instances create web1 \
   --zone=$ZONE \
   --machine-type=e2-small \
-  --network=default \
   --tags=network-lb-tag \
-  --image-family=debian-12 \
+  --image-family=debian-11 \
   --image-project=debian-cloud \
-  --metadata startup-script="#!/bin/bash
+  --metadata startup-script='#!/bin/bash
 apt-get update
 apt-get install apache2 -y
 service apache2 restart
-echo '<h3>Web Server: web1</h3>' | tee /var/www/html/index.html"
+echo "<h3>Web Server: web1</h3>" | tee /var/www/html/index.html'
 
 gcloud compute instances create web2 \
   --zone=$ZONE \
   --machine-type=e2-small \
-  --network=default \
   --tags=network-lb-tag \
-  --image-family=debian-12 \
+  --image-family=debian-11 \
   --image-project=debian-cloud \
-  --metadata startup-script="#!/bin/bash
+  --metadata startup-script='#!/bin/bash
 apt-get update
 apt-get install apache2 -y
 service apache2 restart
-echo '<h3>Web Server: web2</h3>' | tee /var/www/html/index.html"
+echo "<h3>Web Server: web2</h3>" | tee /var/www/html/index.html'
 
 gcloud compute instances create web3 \
   --zone=$ZONE \
   --machine-type=e2-small \
-  --network=default \
   --tags=network-lb-tag \
-  --image-family=debian-12 \
+  --image-family=debian-11 \
   --image-project=debian-cloud \
-  --metadata startup-script="#!/bin/bash
+  --metadata startup-script='#!/bin/bash
 apt-get update
 apt-get install apache2 -y
 service apache2 restart
-echo '<h3>Web Server: web3</h3>' | tee /var/www/html/index.html"
+echo "<h3>Web Server: web3</h3>" | tee /var/www/html/index.html'
 
 # Create firewall rule to allow HTTP traffic
-gcloud compute firewall-rules create allow-http \
-  --network=default \
+gcloud compute firewall-rules create www-firewall-network-lb \
   --allow=tcp:80 \
   --target-tags=network-lb-tag
 ```
@@ -78,10 +74,13 @@ gcloud compute firewall-rules create allow-http \
 gcloud compute addresses create network-lb-ip-1 \
   --region=$REGION
 
+# Create HTTP health check
+gcloud compute http-health-checks create basic-check
+
 # Create target pool
 gcloud compute target-pools create www-pool \
   --region=$REGION \
-  --http-health-check
+  --http-health-check=basic-check
 
 # Add instances to target pool
 gcloud compute target-pools add-instances www-pool \
@@ -101,16 +100,23 @@ gcloud compute forwarding-rules create www-rule \
 ```bash
 # Create instance template
 gcloud compute instance-templates create lb-backend-template \
-  --machine-type=e2-medium \
+  --region=$REGION \
   --network=default \
+  --subnet=default \
   --tags=allow-health-check \
-  --image-family=debian-12 \
+  --machine-type=e2-medium \
+  --image-family=debian-11 \
   --image-project=debian-cloud \
-  --metadata startup-script="#!/bin/bash
+  --metadata startup-script='#!/bin/bash
 apt-get update
 apt-get install apache2 -y
-service apache2 restart
-echo '<h3>Web Server: lb-backend-group</h3>' | tee /var/www/html/index.html"
+a2ensite default-ssl
+a2enmod ssl
+vm_hostname="$(curl -H "Metadata-Flavor:Google" \
+http://169.254.169.254/computeMetadata/v1/instance/name)"
+echo "Page served from: $vm_hostname" | \
+tee /var/www/html/index.html
+systemctl restart apache2'
 
 # Create managed instance group
 gcloud compute instance-groups managed create lb-backend-group \
@@ -129,7 +135,7 @@ gcloud compute firewall-rules create fw-allow-health-check \
 
 # Create health check
 gcloud compute health-checks create http http-basic-check \
-  --port 80
+  --port=80
 
 # Set named port for instance group
 gcloud compute instance-groups managed set-named-ports lb-backend-group \
@@ -192,5 +198,5 @@ gcloud compute addresses delete network-lb-ip-1 --region=$REGION --quiet
 gcloud compute instances delete web1 web2 web3 --zone=$ZONE --quiet
 
 # Clean up firewall rules
-gcloud compute firewall-rules delete allow-http --quiet
+gcloud compute firewall-rules delete www-firewall-network-lb --quiet
 ```
