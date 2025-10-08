@@ -96,6 +96,10 @@ temp/
 # personal/
 # private/
 
+# Posts directory (social media posts)
+_posts/
+labs/templates/post-template.md
+
 # Backup files
 *.bak
 *.backup
