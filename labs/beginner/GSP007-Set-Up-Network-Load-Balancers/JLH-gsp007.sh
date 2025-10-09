@@ -256,9 +256,17 @@ main() {
 
     # Create target pool
     print_step "Creating target pool"
-    gcloud compute target-pools create www-pool \
-        --region "$REGION" --http-health-check basic-check
-    print_success "Target pool created"
+    if gcloud compute target-pools create www-pool \
+        --region "$REGION" --http-health-check basic-check; then
+        print_success "Target pool created"
+    else
+        print_error "Failed to create target pool"
+        exit 1
+    fi
+
+    # Wait for target pool to be ready
+    print_warning "Waiting 10 seconds for target pool to be ready..."
+    sleep 10
 
     # Add instances to pool
     print_step "Adding instances to target pool"
@@ -268,12 +276,16 @@ main() {
 
     # Create forwarding rule
     print_step "Creating forwarding rule"
-    gcloud compute forwarding-rules create www-rule \
+    if gcloud compute forwarding-rules create www-rule \
         --region "$REGION" \
         --ports 80 \
         --address network-lb-ip-1 \
-        --target-pool www-pool
-    print_success "Forwarding rule created"
+        --target-pool www-pool; then
+        print_success "Forwarding rule created"
+    else
+        print_error "Failed to create forwarding rule"
+        exit 1
+    fi
 
     # Task 5: Test the load balancer
     print_step "Task 5: Testing load balancer"
