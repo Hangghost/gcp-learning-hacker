@@ -4,6 +4,7 @@
 # Automated Lab Script
 # This script automates the GSP007 lab for setting up network load balancers
 # Usage: ./JLH-gsp007.sh [--verbose|-v] [cleanup]
+# Status: verified on 2025-10-10
 
 set -e  # Exit on any error
 
