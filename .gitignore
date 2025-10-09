@@ -99,6 +99,7 @@ temp/
 # Posts directory (social media posts)
 _posts/
 labs/templates/post-template.md
+_archive
 
 # Backup files
 *.bak
