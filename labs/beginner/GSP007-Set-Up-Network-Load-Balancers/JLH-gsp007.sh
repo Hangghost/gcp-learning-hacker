@@ -3,6 +3,7 @@
 # GSP007 - Set Up Network Load Balancers
 # Automated Lab Script
 # This script automates the GSP007 lab for setting up network load balancers
+# Usage: ./JLH-gsp007.sh [--verbose|-v] [cleanup]
 
 set -e  # Exit on any error
 
@@ -141,6 +142,13 @@ main() {
     echo "Automated Lab Script"
     echo "========================================="
 
+    # Check for verbose mode
+    VERBOSE=""
+    if [[ "$1" == "--verbose" ]] || [[ "$1" == "-v" ]]; then
+        VERBOSE="--verbosity=info"
+        print_warning "Verbose mode enabled - showing detailed gcloud output"
+    fi
+
     # Check prerequisites
     if ! command_exists gcloud; then
         print_error "gcloud CLI is not installed. Please install it first."
@@ -170,10 +178,10 @@ main() {
 
     # Task 1: Set default region and zone
     print_step "Task 1: Setting default region and zone"
-    gcloud config set compute/region "$REGION"
+    gcloud config set compute/region "$REGION" $VERBOSE
     print_success "Default region set to $REGION"
 
-    gcloud config set compute/zone "$ZONE"
+    gcloud config set compute/zone "$ZONE" $VERBOSE
     print_success "Default zone set to $ZONE"
 
     # Task 2: Create web server instances
@@ -192,7 +200,8 @@ main() {
           apt-get install apache2 -y
           service apache2 restart
           echo "
-    <h3>Web Server: www1</h3>" | tee /var/www/html/index.html'
+    <h3>Web Server: www1</h3>" | tee /var/www/html/index.html' \
+        $VERBOSE
     print_success "Instance www1 created"
 
     # Create www2
@@ -208,7 +217,8 @@ main() {
           apt-get install apache2 -y
           service apache2 restart
           echo "
-    <h3>Web Server: www2</h3>" | tee /var/www/html/index.html'
+    <h3>Web Server: www2</h3>" | tee /var/www/html/index.html' \
+        $VERBOSE
     print_success "Instance www2 created"
 
     # Create www3
@@ -224,18 +234,19 @@ main() {
           apt-get install apache2 -y
           service apache2 restart
           echo "
-    <h3>Web Server: www3</h3>" | tee /var/www/html/index.html'
+    <h3>Web Server: www3</h3>" | tee /var/www/html/index.html' \
+        $VERBOSE
     print_success "Instance www3 created"
 
     # Create firewall rule
     print_step "Creating firewall rule"
     gcloud compute firewall-rules create www-firewall-network-lb \
-        --target-tags network-lb-tag --allow tcp:80
+        --target-tags network-lb-tag --allow tcp:80 $VERBOSE
     print_success "Firewall rule created"
 
     # Verify instances
     print_step "Verifying instances"
-    gcloud compute instances list --filter="name:(www1,www2,www3)"
+    gcloud compute instances list --filter="name:(www1,www2,www3)" $VERBOSE
     print_success "Instances created and listed"
 
     # Task 3: Configure load balancing service
@@ -243,12 +254,12 @@ main() {
 
     # Create static IP
     print_step "Creating static external IP"
-    gcloud compute addresses create network-lb-ip-1 --region "$REGION"
+    gcloud compute addresses create network-lb-ip-1 --region "$REGION" $VERBOSE
     print_success "Static IP created"
 
     # Create health check
     print_step "Creating HTTP health check"
-    gcloud compute http-health-checks create basic-check
+    gcloud compute http-health-checks create basic-check $VERBOSE
     print_success "Health check created"
 
     # Task 4: Create target pool and forwarding rule
@@ -257,7 +268,7 @@ main() {
     # Create target pool
     print_step "Creating target pool"
     if gcloud compute target-pools create www-pool \
-        --region "$REGION" --http-health-check basic-check; then
+        --region "$REGION" --http-health-check basic-check $VERBOSE; then
         print_success "Target pool created"
     else
         print_error "Failed to create target pool"
@@ -271,7 +282,7 @@ main() {
     # Add instances to pool
     print_step "Adding instances to target pool"
     gcloud compute target-pools add-instances www-pool \
-        --instances www1,www2,www3
+        --instances www1,www2,www3 $VERBOSE
     print_success "Instances added to target pool"
 
     # Create forwarding rule
@@ -280,7 +291,7 @@ main() {
         --region "$REGION" \
         --ports 80 \
         --address network-lb-ip-1 \
-        --target-pool www-pool; then
+        --target-pool www-pool $VERBOSE; then
         print_success "Forwarding rule created"
     else
         print_error "Failed to create forwarding rule"
@@ -304,11 +315,12 @@ main() {
     else
         print_warning "To clean up later, run this script with 'cleanup' as an argument"
         echo "Or manually delete the resources created in this lab"
+        echo "Use './JLH-gsp007.sh --verbose' to see detailed gcloud output next time"
     fi
 }
 
 # Check if cleanup was requested
-if [ "$1" = "cleanup" ]; then
+if [ "$1" = "cleanup" ] || [ "$2" = "cleanup" ]; then
     print_warning "Cleanup mode selected"
 
     # Get required variables for cleanup
@@ -320,4 +332,4 @@ if [ "$1" = "cleanup" ]; then
 fi
 
 # Run main function
-main
+main "$@"
