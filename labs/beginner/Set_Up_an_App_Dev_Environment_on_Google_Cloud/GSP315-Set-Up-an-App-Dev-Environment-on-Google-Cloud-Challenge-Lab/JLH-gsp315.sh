@@ -268,6 +268,12 @@ print_step "Task 1: Creating bucket for storing photographs..."
 gsutil mb -l $REGION gs://$BUCKET_NAME
 check_command "Task 1 - Create bucket"
 
+# Grant Eventarc service account permissions on the bucket
+print_step "Setting up Eventarc permissions on bucket..."
+gsutil iam ch serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com:objectViewer gs://$BUCKET_NAME
+gsutil iam ch serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com:legacyBucketReader gs://$BUCKET_NAME
+check_command "Grant Eventarc bucket permissions"
+
 # Task 2: Create Pub/Sub topic
 echo
 print_step "Task 2: Creating Pub/Sub topic..."
@@ -291,6 +297,12 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
   --member=serviceAccount:$BUCKET_SERVICE_ACCOUNT \
   --role=roles/pubsub.publisher
 check_command "Add bucket service account permission"
+
+# Grant Cloud Functions service account storage permissions
+CLOUD_FUNCTIONS_SA="$PROJECT_NUMBER-compute@developer.gserviceaccount.com"
+gsutil iam ch serviceAccount:$CLOUD_FUNCTIONS_SA:objectViewer gs://$BUCKET_NAME
+gsutil iam ch serviceAccount:$CLOUD_FUNCTIONS_SA:legacyBucketReader gs://$BUCKET_NAME
+check_command "Grant Cloud Functions storage permissions"
 
 print_status "Deploying Cloud Run Function..."
 
