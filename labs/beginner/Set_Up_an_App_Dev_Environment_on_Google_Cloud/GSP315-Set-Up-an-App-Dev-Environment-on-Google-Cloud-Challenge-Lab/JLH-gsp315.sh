@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # GSP315 - Set Up an App Dev Environment on Google Cloud: Challenge Lab
 # Automation Script
 
