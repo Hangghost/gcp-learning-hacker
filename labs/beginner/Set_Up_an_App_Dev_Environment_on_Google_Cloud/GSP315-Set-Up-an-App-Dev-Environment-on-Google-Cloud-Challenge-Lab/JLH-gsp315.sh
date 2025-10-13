@@ -50,11 +50,11 @@ setup_function_code() {
     print_step "Setting up Cloud Run Function code..."
 
     # Create temporary directory
-    TEMP_DIR=$(mktemp -d)
-    print_status "Created temporary directory: $TEMP_DIR"
+    local temp_dir=$(mktemp -d)
+    print_status "Created temporary directory: $temp_dir"
 
     # Create package.json
-    cat > "$TEMP_DIR/package.json" << 'EOF'
+    cat > "$temp_dir/package.json" << 'EOF'
 {
  "name": "thumbnails",
  "version": "1.0.0",
@@ -76,7 +76,7 @@ setup_function_code() {
 EOF
 
     # Create index.js with the topic name filled in
-    cat > "$TEMP_DIR/index.js" << EOF
+    cat > "$temp_dir/index.js" << EOF
 const functions = require('@google-cloud/functions-framework');
 const { Storage } = require('@google-cloud/storage');
 const { PubSub } = require('@google-cloud/pubsub');
@@ -143,7 +143,7 @@ functions.cloudEvent('', async cloudEvent => {
 });
 EOF
 
-    echo "$TEMP_DIR"
+    echo "$temp_dir"
 }
 
 # Function to cleanup temporary directory
