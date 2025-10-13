@@ -47,11 +47,8 @@ prompt_with_default() {
 
 # Function to create temporary directory for function code
 setup_function_code() {
-    print_step "Setting up Cloud Run Function code..."
-
     # Create temporary directory
     local temp_dir=$(mktemp -d)
-    print_status "Created temporary directory: $temp_dir"
 
     # Create package.json
     cat > "$temp_dir/package.json" << 'EOF'
@@ -230,6 +227,7 @@ print_step "Task 3: Creating Cloud Run Function..."
 
 # Setup function code
 TEMP_DIR=$(setup_function_code)
+print_status "Created temporary directory: $TEMP_DIR"
 
 # Change to temp directory and deploy function
 cd "$TEMP_DIR"
