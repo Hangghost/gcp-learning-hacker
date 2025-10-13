@@ -53,88 +53,93 @@ setup_function_code() {
     # Create package.json
     cat > "$temp_dir/package.json" << 'EOF'
 {
- "name": "thumbnails",
- "version": "1.0.0",
- "description": "Create Thumbnail of uploaded image",
- "scripts": {
-   "start": "node index.js"
- },
- "dependencies": {
-   "@google-cloud/functions-framework": "^3.0.0",
-   "@google-cloud/pubsub": "^2.0.0",
-   "@google-cloud/storage": "^6.11.0",
-   "sharp": "^0.32.1"
- },
- "devDependencies": {},
- "engines": {
-   "node": ">=4.3.2"
- }
-}
+    "name": "thumbnails",
+    "version": "1.0.0",
+    "description": "Create Thumbnail of uploaded image",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "@google-cloud/functions-framework": "^3.0.0",
+      "@google-cloud/pubsub": "^2.0.0",
+      "@google-cloud/storage": "^5.0.0",
+      "fast-crc32c": "1.0.4",
+      "imagemagick-stream": "4.1.1"
+    },
+    "devDependencies": {},
+    "engines": {
+      "node": ">=4.3.2"
+    }
+  }
 EOF
 
     # Create index.js with the topic name filled in
     cat > "$temp_dir/index.js" << EOF
 const functions = require('@google-cloud/functions-framework');
+const crc32 = require("fast-crc32c");
 const { Storage } = require('@google-cloud/storage');
+const gcs = new Storage();
 const { PubSub } = require('@google-cloud/pubsub');
-const sharp = require('sharp');
+const imagemagick = require("imagemagick-stream");
 
-functions.cloudEvent('', async cloudEvent => {
+functions.cloudEvent('$FUNCTION_NAME', cloudEvent => {
   const event = cloudEvent.data;
 
-  console.log(\`Event: \${JSON.stringify(event)}\`);
+  console.log(\`Event: \${event}\`);
   console.log(\`Hello \${event.bucket}\`);
 
   const fileName = event.name;
   const bucketName = event.bucket;
-  const size = "64x64";
-  const bucket = new Storage().bucket(bucketName);
+  const size = "64x64"
+  const bucket = gcs.bucket(bucketName);
   const topicName = "$TOPIC_NAME";
   const pubsub = new PubSub();
-
-  if (fileName.search("64x64_thumbnail") === -1) {
+  if ( fileName.search("64x64_thumbnail") == -1 ){
     // doesn't have a thumbnail, get the filename extension
-    const filename_split = fileName.split('.');
-    const filename_ext = filename_split[filename_split.length - 1].toLowerCase();
-    const filename_without_ext = fileName.substring(0, fileName.length - filename_ext.length - 1); // fix sub string to remove the dot
-
-    if (filename_ext === 'png' || filename_ext === 'jpg' || filename_ext === 'jpeg') {
+    var filename_split = fileName.split('.');
+    var filename_ext = filename_split[filename_split.length - 1];
+    var filename_without_ext = fileName.substring(0, fileName.length - filename_ext.length );
+    if (filename_ext.toLowerCase() == 'png' || filename_ext.toLowerCase() == 'jpg'){
       // only support png and jpg at this point
       console.log(\`Processing Original: gs://\${bucketName}/\${fileName}\`);
       const gcsObject = bucket.file(fileName);
-      const newFilename = \`\${filename_without_ext}_64x64_thumbnail.\${filename_ext}\`;
-      const gcsNewObject = bucket.file(newFilename);
-
-      try {
-        const [buffer] = await gcsObject.download();
-        const resizedBuffer = await sharp(buffer)
-          .resize(64, 64, {
-            fit: 'inside',
-            withoutEnlargement: true,
+      let newFilename = filename_without_ext + size + '_thumbnail.' + filename_ext;
+      let gcsNewObject = bucket.file(newFilename);
+      let srcStream = gcsObject.createReadStream();
+      let dstStream = gcsNewObject.createWriteStream();
+      let resize = imagemagick().resize(size).quality(90);
+      srcStream.pipe(resize).pipe(dstStream);
+      return new Promise((resolve, reject) => {
+        dstStream
+          .on("error", (err) => {
+            console.log(\`Error: \${err}\`);
+            reject(err);
           })
-          .toFormat(filename_ext)
-          .toBuffer();
-
-        await gcsNewObject.save(resizedBuffer, {
-          metadata: {
-            contentType: \`image/\${filename_ext}\`,
-          },
-        });
-
-        console.log(\`Success: \${fileName} → \${newFilename}\`);
-
-        await pubsub
-          .topic(topicName)
-          .publishMessage({ data: Buffer.from(newFilename) });
-
-        console.log(\`Message published to \${topicName}\`);
-      } catch (err) {
-        console.error(\`Error: \${err}\`);
-      }
-    } else {
+          .on("finish", () => {
+            console.log(\`Success: \${fileName} → \${newFilename}\`);
+              // set the content-type
+              gcsNewObject.setMetadata(
+              {
+                contentType: 'image/'+ filename_ext.toLowerCase()
+              }, function(err, apiResponse) {});
+              pubsub
+                .topic(topicName)
+                .publisher()
+                .publish(Buffer.from(newFilename))
+                .then(messageId => {
+                  console.log(\`Message \${messageId} published.\`);
+                })
+                .catch(err => {
+                  console.error('ERROR:', err);
+                });
+          });
+      });
+    }
+    else {
       console.log(\`gs://\${bucketName}/\${fileName} is not an image I can handle\`);
     }
-  } else {
+  }
+  else {
     console.log(\`gs://\${bucketName}/\${fileName} already has a thumbnail\`);
   }
 });
@@ -158,16 +163,16 @@ test_function() {
 
     # Download test image
     print_status "Downloading test image..."
-    curl -s -o test_image.jpg "https://storage.googleapis.com/cloud-training/gsp315/map.jpg"
+    curl -o map.jpg "https://storage.googleapis.com/cloud-training/gsp315/map.jpg"
     check_command "Download test image"
 
     # Upload to bucket
     print_status "Uploading test image to bucket..."
-    gcloud storage cp test_image.jpg gs://$BUCKET_NAME/
+    gsutil cp map.jpg gs://$BUCKET_NAME/map.jpg
     check_command "Upload test image"
 
     # Clean up local test file
-    rm -f test_image.jpg
+    rm -f map.jpg
 
     print_warning "Please check the bucket for the thumbnail image. It may take a few minutes to appear."
     print_status "Function test completed. Check gs://$BUCKET_NAME/ for thumbnail image."
@@ -195,6 +200,56 @@ fi
 PROJECT_ID=$(gcloud config get-value project)
 print_status "Using project: $PROJECT_ID"
 
+# Extract REGION from ZONE if not provided
+if [ -z "$REGION" ]; then
+    REGION="${ZONE%-*}"
+    print_status "Extracted REGION from ZONE: $REGION"
+fi
+
+echo
+print_step "Enabling required GCP services..."
+gcloud services enable \
+  artifactregistry.googleapis.com \
+  cloudfunctions.googleapis.com \
+  cloudbuild.googleapis.com \
+  eventarc.googleapis.com \
+  run.googleapis.com \
+  logging.googleapis.com \
+  pubsub.googleapis.com
+check_command "Enable GCP services"
+
+print_status "Waiting for services to be enabled..."
+sleep 70
+
+# Set up service account permissions
+PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+print_status "Project number: $PROJECT_NUMBER"
+
+print_step "Setting up service account permissions..."
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+    --role=roles/eventarc.eventReceiver
+check_command "Add Eventarc event receiver role"
+
+sleep 20
+
+SERVICE_ACCOUNT="$(gsutil kms serviceaccount -p $PROJECT_ID)"
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:${SERVICE_ACCOUNT}" \
+    --role='roles/pubsub.publisher'
+check_command "Add PubSub publisher role to storage service account"
+
+sleep 20
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:service-$PROJECT_NUMBER@gcp-sa-pubsub.iam.gserviceaccount.com \
+    --role=roles/iam.serviceAccountTokenCreator
+check_command "Add service account token creator role"
+
+sleep 20
+
 echo
 print_step "Lab configuration:"
 echo "REGION: $REGION"
@@ -210,9 +265,7 @@ read -p "Press Enter to continue or Ctrl+C to abort..."
 # Task 1: Create bucket
 echo
 print_step "Task 1: Creating bucket for storing photographs..."
-gcloud storage buckets create gs://$BUCKET_NAME \
-  --location=$REGION \
-  --uniform-bucket-level-access
+gsutil mb -l $REGION gs://$BUCKET_NAME
 check_command "Task 1 - Create bucket"
 
 # Task 2: Create Pub/Sub topic
@@ -231,17 +284,48 @@ print_status "Created temporary directory: $TEMP_DIR"
 
 # Change to temp directory and deploy function
 cd "$TEMP_DIR"
+
+# Add additional service account permission for bucket
+BUCKET_SERVICE_ACCOUNT="${PROJECT_ID}@${PROJECT_ID}.iam.gserviceaccount.com"
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member=serviceAccount:$BUCKET_SERVICE_ACCOUNT \
+  --role=roles/pubsub.publisher
+check_command "Add bucket service account permission"
+
 print_status "Deploying Cloud Run Function..."
-gcloud functions deploy $FUNCTION_NAME \
-  --gen2 \
-  --runtime=nodejs22 \
-  --region=$REGION \
-  --source=. \
-  --entry-point=$FUNCTION_NAME \
-  --trigger-event-filters="type=google.cloud.storage.object.v1.finalized" \
-  --trigger-event-filters="bucket=$BUCKET_NAME" \
-  --allow-unauthenticated \
-  --set-env-vars TOPIC_NAME=$TOPIC_NAME
+
+# Deploy function with retry logic
+deploy_function() {
+    gcloud functions deploy $FUNCTION_NAME \
+    --gen2 \
+    --runtime nodejs20 \
+    --trigger-resource $BUCKET_NAME \
+    --trigger-event google.storage.object.finalize \
+    --entry-point $FUNCTION_NAME \
+    --region=$REGION \
+    --source . \
+    --quiet
+}
+
+# Variables
+SERVICE_NAME="$FUNCTION_NAME"
+
+# Loop until the Cloud Run service is created
+while true; do
+  # Run the deployment command
+  deploy_function
+
+  # Check if Cloud Run service is created
+  if gcloud run services describe $SERVICE_NAME --region $REGION &> /dev/null; then
+    print_status "Cloud Run service is created successfully."
+    break
+  else
+    print_warning "Waiting for Cloud Run service to be created..."
+    print_status "Meantime Subscribe to Quicklab[https://www.youtube.com/@quick_lab]."
+    sleep 10
+  fi
+done
+
 check_command "Task 3 - Create Cloud Run Function"
 
 # Return to original directory
@@ -292,7 +376,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     check_command "Cleanup - Delete topic"
 
     print_warning "Removing bucket and all contents..."
-    gcloud storage rm -r gs://$BUCKET_NAME --quiet
+    gsutil rm -r gs://$BUCKET_NAME
     check_command "Cleanup - Delete bucket"
 
     print_status "🧹 Cleanup completed!"
