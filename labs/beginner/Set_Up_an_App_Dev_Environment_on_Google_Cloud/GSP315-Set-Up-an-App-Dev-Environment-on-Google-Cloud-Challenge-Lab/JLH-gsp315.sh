@@ -3,8 +3,6 @@
 # GSP315 - Set Up an App Dev Environment on Google Cloud: Challenge Lab
 # Automation Script
 
-set -e  # Exit on any error
-
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
