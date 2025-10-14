@@ -18,7 +18,7 @@ tutorials
 
 ## Related Labs
 - GSP073: Cloud Storage: Qwik Start - Cloud Console
-- GSP074: Cloud Storage: Qwik Start - CLI
+- GSP074: Cloud Storage: Qwik Start - CLI/SDK
 - GSP075: Cloud Storage: Qwik Start - gsutil
 
 ## Key Topics Covered

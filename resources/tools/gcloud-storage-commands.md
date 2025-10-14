@@ -20,6 +20,7 @@ tools
 
 ## Related Labs
 - GSP073: Cloud Storage: Qwik Start - Cloud Console
+- GSP074: Cloud Storage: Qwik Start - CLI/SDK
 
 ## Key Commands Covered
 - `gcloud storage buckets create` - Create buckets

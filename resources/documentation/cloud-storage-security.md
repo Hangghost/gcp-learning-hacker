@@ -4,7 +4,7 @@
 Comprehensive security guide for Google Cloud Storage covering access control, encryption, audit logging, and security best practices.
 
 ## URL
-
+https://cloud.google.com/storage/docs/security
 
 ## Category
 documentation
@@ -20,6 +20,7 @@ documentation
 
 ## Related Labs
 - GSP073: Cloud Storage: Qwik Start - Cloud Console
+- GSP074: Cloud Storage: Qwik Start - CLI/SDK
 
 ## Key Topics Covered
 - Access control and IAM
