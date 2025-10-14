@@ -23,12 +23,6 @@
 - [Load Balancing](https://cloud.google.com/load-balancing/docs) - Traffic distribution
 - [Cloud CDN](https://cloud.google.com/cdn/docs) - Content delivery network
 
-### Monitoring & Observability
-- [Cloud Monitoring](https://cloud.google.com/monitoring/docs) - Application and infrastructure monitoring
-- [Cloud Logging](https://cloud.google.com/logging/docs) - Centralized log management
-- [Cloud Trace](https://cloud.google.com/trace/docs) - Application performance tracing
-- [Cloud Profiler](https://cloud.google.com/profiler/docs) - CPU and memory profiling
-
 ### Security
 - [IAM](https://cloud.google.com/iam/docs) - Identity and Access Management
 - [Security Command Center](https://cloud.google.com/security-command-center/docs) - Security management

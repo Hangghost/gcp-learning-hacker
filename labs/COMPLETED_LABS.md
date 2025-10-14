@@ -15,17 +15,18 @@
 
 | GSP 編號 | 標題 | 完成日期 | 檔案位置 |
 |----------|------|----------|----------|
-| GSP007 | Set Up Network Load Balancers | 2025-10-14 | beginner/Implementing Cloud Load Balancing for Compute Engine/GSP007-Set-Up-Network-Load-Balancers/ |
-| GSP041 | Internal Application Load Balancer | 2025-10-14 | beginner/Implementing Cloud Load Balancing for Compute Engine/GSP041-internal-application-load-balancer/ |
-| GSP064 | Cloud IAM Qwik Start | 2025-10-14 | beginner/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP064-Cloud-IAM-Qwik-Start/ |
-| GSP073 | Cloud Storage Qwik Start | 2025-10-14 | beginner/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP073-cloud-storage-qwik-start/ |
-| GSP074 | Cloud Storage Qwik Start - CLI/SDK | 2025-10-14 | beginner/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP074-Cloud-Storage-Qwik-Start-CLI/ |
-| GSP080 | Cloud Run Functions: Qwik Start - Command Line | 2025-10-14 | beginner/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP080-cloud-run-functions-qwik-start-command-line/ |
-| GSP081 | Cloud Run Functions: Qwik Start - Console | 2025-10-14 | beginner/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP081-cloud-run-functions-qwik-start-console/ |
-| GSP089 | Cloud Monitoring Qwik Start | 2025-10-14 | beginner/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP089-Cloud-Monitoring-Qwik-Start/ |
-| GSP155 | Set Up Application Load Balancers | 2025-10-14 | beginner/Implementing Cloud Load Balancing for Compute Engine/GSP155-Set-Up-Application-Load-Balancers/ |
-| GSP313 | Load Balancing Challenge | 2025-10-14 | beginner/Implementing Cloud Load Balancing for Compute Engine/GSP313-load-balancing-challenge/ |
-| GSP315 | Set Up an App Dev Environment on Google Cloud Challenge Lab | 2025-10-14 | beginner/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP315-Set-Up-an-App-Dev-Environment-on-Google-Cloud-Challenge-Lab/ |
+| GSP007 | Set Up Network Load Balancers | 2025-10-14 | introductory/Implementing Cloud Load Balancing for Compute Engine/GSP007-Set-Up-Network-Load-Balancers/ |
+| GSP041 | Internal Application Load Balancer | 2025-10-14 | introductory/Implementing Cloud Load Balancing for Compute Engine/GSP041-internal-application-load-balancer/ |
+| GSP064 | Cloud IAM Qwik Start | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP064-Cloud-IAM-Qwik-Start/ |
+| GSP073 | Cloud Storage Qwik Start | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP073-cloud-storage-qwik-start/ |
+| GSP074 | Cloud Storage Qwik Start - CLI/SDK | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP074-Cloud-Storage-Qwik-Start-CLI/ |
+| GSP080 | Cloud Run Functions: Qwik Start - Command Line | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP080-cloud-run-functions-qwik-start-command-line/ |
+| GSP081 | Cloud Run Functions: Qwik Start - Console | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP081-cloud-run-functions-qwik-start-console/ |
+| GSP089 | Cloud Monitoring Qwik Start | 2025-10-14 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/GSP089-Cloud-Monitoring-Qwik-Start/ |
+| GSP096 | Pub/Sub: Qwik Start - Console | 2025-10-14 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/GSP096-Pub-Sub-Qwik-Start-Console/ |
+| GSP155 | Set Up Application Load Balancers | 2025-10-14 | introductory/Implementing Cloud Load Balancing for Compute Engine/GSP155-Set-Up-Application-Load-Balancers/ |
+| GSP313 | Load Balancing Challenge | 2025-10-14 | introductory/Implementing Cloud Load Balancing for Compute Engine/GSP313-load-balancing-challenge/ |
+| GSP315 | Set Up an App Dev Environment on Google Cloud Challenge Lab | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP315-Set-Up-an-App-Dev-Environment-on-Google-Cloud-Challenge-Lab/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -35,8 +36,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 11 個 labs
-- **Beginner**: 11 個
+- **總計完成**: 12 個 labs
+- **Beginner**: 12 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -61,6 +62,9 @@
 
 ### 監控 (Monitoring)
 - GSP089: Cloud Monitoring Qwik Start
+
+### Pub/Sub (Messaging)
+- GSP096: Pub/Sub: Qwik Start - Console
 
 ### 開發環境設定
 - GSP315: Set Up an App Dev Environment on Google Cloud Challenge Lab
