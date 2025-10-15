@@ -29,6 +29,7 @@
 | GSP315 | Set Up an App Dev Environment on Google Cloud Challenge Lab | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP315-Set-Up-an-App-Dev-Environment-on-Google-Cloud-Challenge-Lab/ |
 | GSP469 | Google Sheets: Getting Started | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP469-Google-Sheets-Getting-Started/ |
 | GSP072 | BigQuery: Qwik Start - Console | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP072-bigquery-qwik-start-console/ |
+| GSP870 | Connected Sheets: Qwik Start | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP870-Connected-Sheets-Qwik-Start/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -38,8 +39,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 14 個 labs
-- **Beginner**: 14 個
+- **總計完成**: 15 個 labs
+- **Beginner**: 15 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -73,9 +74,11 @@
 
 ### Google Workspace（生產力工具）
 - GSP469: Google Sheets: Getting Started
+- GSP870: Connected Sheets: Qwik Start
 
 ### BigQuery（資料倉儲）
 - GSP072: BigQuery: Qwik Start - Console
+- GSP870: Connected Sheets: Qwik Start
 
 ## 更新說明
 

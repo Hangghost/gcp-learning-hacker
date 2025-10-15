@@ -21,6 +21,7 @@ documentation
 
 ## Related Labs
 - GSP469: Google Sheets: Getting Started
+- GSP870: Connected Sheets: Qwik Start
 
 ## Notes
 Comprehensive documentation covering all aspects of Google Sheets including:
