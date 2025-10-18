@@ -30,6 +30,7 @@
 | GSP469 | Google Sheets: Getting Started | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP469-Google-Sheets-Getting-Started/ |
 | GSP072 | BigQuery: Qwik Start - Console | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP072-bigquery-qwik-start-console/ |
 | GSP870 | Connected Sheets: Qwik Start | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP870-Connected-Sheets-Qwik-Start/ |
+| ARC103 | Analyze BigQuery Data in Connected Sheets: Challenge Lab | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/ARC103-analyze-bigquery-data-connected-sheets-challenge-lab/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -39,8 +40,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 15 個 labs
-- **Beginner**: 15 個
+- **總計完成**: 16 個 labs
+- **Beginner**: 16 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -75,10 +76,12 @@
 ### Google Workspace（生產力工具）
 - GSP469: Google Sheets: Getting Started
 - GSP870: Connected Sheets: Qwik Start
+- ARC103: Analyze BigQuery Data in Connected Sheets: Challenge Lab
 
 ### BigQuery（資料倉儲）
 - GSP072: BigQuery: Qwik Start - Console
 - GSP870: Connected Sheets: Qwik Start
+- ARC103: Analyze BigQuery Data in Connected Sheets: Challenge Lab
 
 ## 更新說明
 
