@@ -7,6 +7,8 @@ A comprehensive repository for Google Cloud Platform (GCP) learning resources, h
 ```
 gcp-learning-hacker/
 ├── README.md                 # Project overview and documentation
+├── docs/                     # Project documentation and guides
+│   └── gcp-command-fixes.md  # GCP CLI command fixes and best practices
 ├── labs/                     # Hands-on labs and practical exercises
 │   ├── beginner/            # Entry-level GCP labs
 │   ├── intermediate/         # Intermediate level labs
@@ -48,8 +50,18 @@ gcp-learning-hacker/
 
 ### Advanced Path
 - Challenge yourself with [labs/advanced/](labs/advanced/) complex scenarios
-- Prepare for certifications in [certifications/](certifications/)
-- Build real-world solutions in [projects/](projects/)
+
+## 📖 Documentation
+
+### [GCP 指令修正指南](docs/gcp-command-fixes.md)
+
+專為開發者和維護者準備的技術指南，記錄常見 GCP CLI 指令問題及其修正方法：
+- Health Check 指令語法修正
+- Instance Template 參數最佳實踐
+- Startup Script 格式化規範
+- Firewall Rule 命名指南
+
+**建議**：在生成新的 lab 自動化腳本或遇到 GCP 指令錯誤時參考此指南。
 
 ## 🚀 Getting Started
 
