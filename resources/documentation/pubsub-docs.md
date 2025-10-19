@@ -22,6 +22,7 @@ documentation
 - Familiarity with Cloud Console
 
 ## Related Labs
+- GSP095: Pub/Sub: Qwik Start - Command Line
 - GSP096: Pub/Sub: Qwik Start - Console
 
 ## Notes
