@@ -23,6 +23,7 @@
 | GSP080 | Cloud Run Functions: Qwik Start - Command Line | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP080-cloud-run-functions-qwik-start-command-line/ |
 | GSP081 | Cloud Run Functions: Qwik Start - Console | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP081-cloud-run-functions-qwik-start-console/ |
 | GSP089 | Cloud Monitoring Qwik Start | 2025-10-14 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/GSP089-Cloud-Monitoring-Qwik-Start/ |
+| GSP094 | Pub/Sub: Qwik Start - Python | 2025-10-19 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/gsp094-pub-sub-qwik-start-python/ |
 | GSP095 | Pub/Sub: Qwik Start - Command Line | 2025-10-19 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/GSP095-Pub-Sub-Qwik-Start-Command-Line/ |
 | GSP096 | Pub/Sub: Qwik Start - Console | 2025-10-14 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/GSP096-Pub-Sub-Qwik-Start-Console/ |
 | GSP155 | Set Up Application Load Balancers | 2025-10-14 | introductory/Implementing Cloud Load Balancing for Compute Engine/GSP155-Set-Up-Application-Load-Balancers/ |
@@ -41,8 +42,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 17 個 labs
-- **Beginner**: 17 個
+- **總計完成**: 18 個 labs
+- **Beginner**: 18 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -69,6 +70,7 @@
 - GSP089: Cloud Monitoring Qwik Start
 
 ### Pub/Sub (Messaging)
+- GSP094: Pub/Sub: Qwik Start - Python
 - GSP095: Pub/Sub: Qwik Start - Command Line
 - GSP096: Pub/Sub: Qwik Start - Console
 
