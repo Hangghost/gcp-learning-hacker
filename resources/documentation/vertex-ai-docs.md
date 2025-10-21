@@ -21,7 +21,8 @@ documentation
 - Familiarity with Python (for SDK usage)
 
 ## Related Labs
-- GSP-AI-001: Build an AI Image Recognition app using Gemini on Vertex AI
+- bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
+- bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 
 ## Notes
 Vertex AI provides:
