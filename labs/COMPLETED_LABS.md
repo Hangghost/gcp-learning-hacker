@@ -33,8 +33,9 @@
 | GSP072 | BigQuery: Qwik Start - Console | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP072-bigquery-qwik-start-console/ |
 | GSP870 | Connected Sheets: Qwik Start | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP870-Connected-Sheets-Qwik-Start/ |
 | ARC103 | Analyze BigQuery Data in Connected Sheets: Challenge Lab | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/ARC103-analyze-bigquery-data-connected-sheets-challenge-lab/ |
-| bb-ide-genai-001 | Build an AI Image Recognition app using Gemini on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/GSP-AI-001-build-ai-image-recognition-gemini/ |
+| bb-ide-genai-001 | Build an AI Image Recognition app using Gemini on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-001-build-ai-image-recognition-gemini/ |
 | bb-ide-genai-002 | Build an AI Image Generator app using Imagen on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-002-build-ai-image-generator-imagen/ |
+| bb-ide-genai-003 | Build an application to send Chat Prompts using the Gemini model | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-003-build-ai-chat-gemini/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -44,8 +45,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 20 個 labs
-- **Beginner**: 20 個
+- **總計完成**: 21 個 labs
+- **Beginner**: 21 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -90,8 +91,9 @@
 - ARC103: Analyze BigQuery Data in Connected Sheets: Challenge Lab
 
 ### AI 應用開發 (AI Applications)
-- GSP-AI-001: Build an AI Image Recognition app using Gemini on Vertex AI
+- bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
+- bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
 
 ## 更新說明
 
