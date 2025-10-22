@@ -41,6 +41,7 @@
 | GSP103 | Dataproc: Qwik Start - Console | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP103-Dataproc-Qwik-Start-Console/ |
 | GSP104 | Dataproc: Qwik Start - Command Line | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP104-Dataproc-Qwik-Start-Command-Line/ |
 | GSP105 | Dataprep: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP105-Dataprep-Qwik-Start/ |
+| GSP119 | Speech-to-Text API: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP119-Speech-to-Text-API-Qwik-Start/ |
 | GSP192 | Dataflow: Qwik Start - Templates | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP192-Dataflow-Qwik-Start-Templates/ |
 | GSP207 | Dataflow: Qwik Start - Python | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP207-Dataflow-Qwik-Start-Python/ |
 
@@ -52,8 +53,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 28 個 labs
-- **Beginner**: 28 個
+- **總計完成**: 29 個 labs
+- **Beginner**: 29 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -99,6 +100,7 @@
 
 ### AI 應用開發 (AI Applications)
 - GSP097: Cloud Natural Language API: Qwik Start
+- GSP119: Speech-to-Text API: Qwik Start
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
