@@ -37,6 +37,7 @@
 | bb-ide-genai-002 | Build an AI Image Generator app using Imagen on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-002-build-ai-image-generator-imagen/ |
 | bb-ide-genai-003 | Build an application to send Chat Prompts using the Gemini model | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-003-build-ai-chat-gemini/ |
 | bb-ide-genai-004 | Build a Multi-Modal GenAI Application: Challenge Lab | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-004-build-multi-modal-genai-application/ |
+| GSP105 | Dataprep: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP105-Dataprep-Qwik-Start/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -46,8 +47,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 22 個 labs
-- **Beginner**: 22 個
+- **總計完成**: 23 個 labs
+- **Beginner**: 23 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -96,6 +97,9 @@
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
 - bb-ide-genai-004: Build a Multi-Modal GenAI Application: Challenge Lab
+
+### 資料分析與準備 (Data Analysis & Preparation)
+- GSP105: Dataprep: Qwik Start
 
 ## 更新說明
 
