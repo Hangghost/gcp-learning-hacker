@@ -39,6 +39,7 @@
 | bb-ide-genai-004 | Build a Multi-Modal GenAI Application: Challenge Lab | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-004-build-multi-modal-genai-application/ |
 | GSP105 | Dataprep: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP105-Dataprep-Qwik-Start/ |
 | GSP192 | Dataflow: Qwik Start - Templates | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP192-Dataflow-Qwik-Start-Templates/ |
+| GSP207 | Dataflow: Qwik Start - Python | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP207-Dataflow-Qwik-Start-Python/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -48,8 +49,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 24 個 labs
-- **Beginner**: 24 個
+- **總計完成**: 25 個 labs
+- **Beginner**: 25 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -104,6 +105,7 @@
 
 ### Dataflow (串流資料處理)
 - GSP192: Dataflow: Qwik Start - Templates
+- GSP207: Dataflow: Qwik Start - Python
 
 ## 更新說明
 

@@ -20,6 +20,7 @@ documentation
 
 ## Related Labs
 - GSP192: Dataflow: Qwik Start - Templates
+- GSP207: Dataflow: Qwik Start - Python
 
 ## Notes
 This guide provides step-by-step instructions for using pre-built Dataflow templates to quickly implement common data processing scenarios without writing custom code.
