@@ -38,6 +38,7 @@
 | bb-ide-genai-003 | Build an application to send Chat Prompts using the Gemini model | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-003-build-ai-chat-gemini/ |
 | bb-ide-genai-004 | Build a Multi-Modal GenAI Application: Challenge Lab | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-004-build-multi-modal-genai-application/ |
 | GSP103 | Dataproc: Qwik Start - Console | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP103-Dataproc-Qwik-Start-Console/ |
+| GSP104 | Dataproc: Qwik Start - Command Line | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP104-Dataproc-Qwik-Start-Command-Line/ |
 | GSP105 | Dataprep: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP105-Dataprep-Qwik-Start/ |
 | GSP192 | Dataflow: Qwik Start - Templates | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP192-Dataflow-Qwik-Start-Templates/ |
 | GSP207 | Dataflow: Qwik Start - Python | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP207-Dataflow-Qwik-Start-Python/ |
@@ -50,8 +51,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 26 個 labs
-- **Beginner**: 26 個
+- **總計完成**: 27 個 labs
+- **Beginner**: 27 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -106,6 +107,7 @@
 
 ### Dataproc (大數據處理)
 - GSP103: Dataproc: Qwik Start - Console
+- GSP104: Dataproc: Qwik Start - Command Line
 
 ### Dataflow (串流資料處理)
 - GSP192: Dataflow: Qwik Start - Templates
