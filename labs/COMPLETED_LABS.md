@@ -42,6 +42,7 @@
 | GSP104 | Dataproc: Qwik Start - Command Line | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP104-Dataproc-Qwik-Start-Command-Line/ |
 | GSP105 | Dataprep: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP105-Dataprep-Qwik-Start/ |
 | GSP119 | Speech-to-Text API: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP119-Speech-to-Text-API-Qwik-Start/ |
+| GSP154 | Video Intelligence: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP154-Video-Intelligence-Qwik-Start/ |
 | GSP192 | Dataflow: Qwik Start - Templates | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP192-Dataflow-Qwik-Start-Templates/ |
 | GSP207 | Dataflow: Qwik Start - Python | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP207-Dataflow-Qwik-Start-Python/ |
 

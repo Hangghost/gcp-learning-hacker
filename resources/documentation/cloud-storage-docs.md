@@ -21,6 +21,7 @@ documentation
 ## Related Labs
 - GSP073: Cloud Storage: Qwik Start - Cloud Console
 - GSP074: Cloud Storage: Qwik Start - CLI/SDK
+- GSP154: Video Intelligence: Qwik Start
 
 ## Key Topics Covered
 - Bucket creation and management
