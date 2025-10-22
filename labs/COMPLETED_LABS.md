@@ -37,6 +37,7 @@
 | bb-ide-genai-002 | Build an AI Image Generator app using Imagen on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-002-build-ai-image-generator-imagen/ |
 | bb-ide-genai-003 | Build an application to send Chat Prompts using the Gemini model | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-003-build-ai-chat-gemini/ |
 | bb-ide-genai-004 | Build a Multi-Modal GenAI Application: Challenge Lab | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-004-build-multi-modal-genai-application/ |
+| GSP103 | Dataproc: Qwik Start - Console | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP103-Dataproc-Qwik-Start-Console/ |
 | GSP105 | Dataprep: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP105-Dataprep-Qwik-Start/ |
 | GSP192 | Dataflow: Qwik Start - Templates | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP192-Dataflow-Qwik-Start-Templates/ |
 | GSP207 | Dataflow: Qwik Start - Python | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP207-Dataflow-Qwik-Start-Python/ |
@@ -49,8 +50,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 25 個 labs
-- **Beginner**: 25 個
+- **總計完成**: 26 個 labs
+- **Beginner**: 26 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -102,6 +103,9 @@
 
 ### 資料分析與準備 (Data Analysis & Preparation)
 - GSP105: Dataprep: Qwik Start
+
+### Dataproc (大數據處理)
+- GSP103: Dataproc: Qwik Start - Console
 
 ### Dataflow (串流資料處理)
 - GSP192: Dataflow: Qwik Start - Templates
