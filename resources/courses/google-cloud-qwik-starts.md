@@ -23,6 +23,7 @@ courses
 ## Related Labs
 - GSP080: Cloud Run Functions: Qwik Start - Command Line
 - GSP081: Cloud Run Functions: Qwik Start - Console
+- GSP097: Cloud Natural Language API: Qwik Start
 - GSP924: Cloud Run Functions: Qwik Start - Using the Command Line
 - Multiple other GSP labs across different GCP services
 

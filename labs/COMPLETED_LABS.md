@@ -26,6 +26,7 @@
 | GSP094 | Pub/Sub: Qwik Start - Python | 2025-10-19 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/gsp094-pub-sub-qwik-start-python/ |
 | GSP095 | Pub/Sub: Qwik Start - Command Line | 2025-10-19 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/GSP095-Pub-Sub-Qwik-Start-Command-Line/ |
 | GSP096 | Pub/Sub: Qwik Start - Console | 2025-10-14 | introductory/Set-Up-an-App-Dev-Environment-on-Google-Cloud/GSP096-Pub-Sub-Qwik-Start-Console/ |
+| GSP097 | Cloud Natural Language API: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP097-Cloud-Natural-Language-API-Qwik-Start/ |
 | GSP155 | Set Up Application Load Balancers | 2025-10-14 | introductory/Implementing Cloud Load Balancing for Compute Engine/GSP155-Set-Up-Application-Load-Balancers/ |
 | GSP313 | Load Balancing Challenge | 2025-10-14 | introductory/Implementing Cloud Load Balancing for Compute Engine/GSP313-load-balancing-challenge/ |
 | GSP315 | Set Up an App Dev Environment on Google Cloud Challenge Lab | 2025-10-14 | introductory/Set_Up_an_App_Dev_Environment_on_Google_Cloud/GSP315-Set-Up-an-App-Dev-Environment-on-Google-Cloud-Challenge-Lab/ |
@@ -51,8 +52,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 27 個 labs
-- **Beginner**: 27 個
+- **總計完成**: 28 個 labs
+- **Beginner**: 28 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -97,6 +98,7 @@
 - ARC103: Analyze BigQuery Data in Connected Sheets: Challenge Lab
 
 ### AI 應用開發 (AI Applications)
+- GSP097: Cloud Natural Language API: Qwik Start
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
