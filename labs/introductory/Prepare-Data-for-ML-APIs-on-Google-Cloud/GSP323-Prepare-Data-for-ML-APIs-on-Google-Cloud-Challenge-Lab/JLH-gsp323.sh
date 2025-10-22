@@ -96,19 +96,16 @@ setup_variables() {
     fi
 
     # Set default region (you can modify this)
-    export REGION="${REGION:-us-central1}"
-    export ZONE="${ZONE:-us-central1-a}"
+    export REGION="${REGION:-us-east1}"
+    export ZONE="${ZONE:-us-east1-b}"
 
-    # Generate unique names
-    export BUCKET_NAME="${PROJECT_ID}-gsp323-$(date +%s)"
-    export DATASET_NAME="lab_dataset_gsp323"
-    export TABLE_NAME="lab_table"
-    export TEMP_BUCKET="${BUCKET_NAME}-temp"
-    export SPEECH_BUCKET="${BUCKET_NAME}-speech"
-    export NL_BUCKET="${BUCKET_NAME}-nl"
-    export CLUSTER_NAME="dataproc-cluster-gsp323"
-    export SPEECH_OUTPUT="speech_output.json"
-    export NL_OUTPUT="nl_output.json"
+    # Set resource names (based on actual lab values)
+    export BUCKET_NAME="${PROJECT_ID}-marking"
+    export DATASET_NAME="lab_676"
+    export TABLE_NAME="customers_937"
+    export CLUSTER_NAME="dataproc-cluster-$(date +%s)"
+    export SPEECH_OUTPUT="task3-gcs-615.result"
+    export NL_OUTPUT="task4-cnl-605.result"
 
     print_success "Variables set up successfully"
     echo "Project ID: $PROJECT_ID"
@@ -188,7 +185,17 @@ task2_dataproc() {
 
     # Copy data file to HDFS
     print_status "Copying data file to HDFS..."
-    gcloud compute ssh $CLUSTER_NAME-m --region=$REGION -- "hdfs dfs -cp gs://spls/gsp323/data.txt /data.txt"
+    # Try direct SSH first using correct zone
+    CLUSTER_ZONE=$(gcloud dataproc clusters describe $CLUSTER_NAME --region=$REGION --format="value(config.gceClusterConfig.zoneUri)" | awk -F/ '{print $NF}')
+    if gcloud compute ssh $CLUSTER_NAME-m --zone=$CLUSTER_ZONE --command="hdfs dfs -cp gs://spls/gsp323/data.txt /data.txt"; then
+        print_success "Data file copied successfully"
+    else
+        print_warning "Direct SSH failed, trying alternative method..."
+        # Alternative method using instance listing
+        VM_NAME=$(gcloud compute instances list --project="$PROJECT_ID" --format=json | jq -r '.[0].name')
+        ZONE=$(gcloud compute instances list --filter="name=$VM_NAME" --format 'csv[no-heading](zone)')
+        gcloud compute ssh --zone "$ZONE" "$VM_NAME" --project "$PROJECT_ID" --command="hdfs dfs -cp gs://spls/gsp323/data.txt /data.txt"
+    fi
 
     # Submit Spark job
     print_status "Submitting Spark job..."
@@ -206,161 +213,75 @@ task2_dataproc() {
 task3_speech() {
     print_status "Starting Task 3: Speech-to-Text API..."
 
-    # Create bucket for results
-    gsutil mb -p $PROJECT_ID -l $REGION gs://$SPEECH_BUCKET || print_warning "Bucket might already exist"
+    # Create API key
+    print_status "Creating API key for Speech-to-Text..."
+    gcloud alpha services api-keys create --display-name="speech-api-key" || print_warning "API key might already exist"
+    API_KEY_NAME=$(gcloud alpha services api-keys list --format="value(name)" --filter "displayName=speech-api-key")
+    API_KEY=$(gcloud alpha services api-keys get-key-string $API_KEY_NAME --format="value(keyString)")
 
-    # Create service account
-    print_status "Creating service account for Speech API..."
-    gcloud iam service-accounts create speech-sa-gsp323 --display-name "Speech Service Account" || print_warning "Service account might already exist"
-
-    gcloud iam service-accounts keys create ~/speech-key.json \
-        --iam-account speech-sa-gsp323@$PROJECT_ID.iam.gserviceaccount.com || print_warning "Key might already exist"
-
-    export GOOGLE_APPLICATION_CREDENTIALS=~/speech-key.json
-
-    # Create Python script for Speech-to-Text
-    cat > speech_analysis.py << 'EOF'
-from google.cloud import speech_v1p1beta1 as speech
-from google.cloud import storage
-import io
-import json
-
-def transcribe_audio():
-    """Transcribe audio from GCS bucket."""
-    client = speech.SpeechClient()
-
-    # Audio file from lab
-    audio_uri = "gs://spls/gsp323/task3.flac"
-
-    audio = speech.RecognitionAudio(uri=audio_uri)
-    config = speech.RecognitionConfig(
-        encoding=speech.RecognitionConfig.AudioEncoding.FLAC,
-        sample_rate_hertz=16000,
-        language_code='en-US',
-    )
-
-    operation = client.long_running_recognize(config=config, audio=audio)
-    print("Waiting for operation to complete...")
-    response = operation.result(timeout=300)
-
-    # Process results
-    results = []
-    for result in response.results:
-        results.append({
-            'transcript': result.alternatives[0].transcript,
-            'confidence': result.alternatives[0].confidence
-        })
-
-    # Save to Cloud Storage
-    storage_client = storage.Client()
-    bucket = storage_client.bucket('${SPEECH_BUCKET}')
-    blob = bucket.blob('${SPEECH_OUTPUT}')
-
-    blob.upload_from_string(json.dumps(results, indent=2), content_type='application/json')
-    print(f"Results saved to gs://${SPEECH_BUCKET}/${SPEECH_OUTPUT}")
-
-    return results
-
-if __name__ == "__main__":
-    transcribe_audio()
+    # Create request JSON
+    cat > request.json <<EOF
+{
+  "config": {
+      "encoding":"FLAC",
+      "languageCode": "en-US"
+  },
+  "audio": {
+      "uri":"gs://spls/gsp323/task3.flac"
+  }
+}
 EOF
 
-    # Replace variables in script
-    sed -i "s/\${SPEECH_BUCKET}/$SPEECH_BUCKET/g" speech_analysis.py
-    sed -i "s/\${SPEECH_OUTPUT}/$SPEECH_OUTPUT/g" speech_analysis.py
+    # Call Speech-to-Text API
+    print_status "Calling Speech-to-Text API..."
+    curl -s -X POST -H "Content-Type: application/json" \
+        --data-binary @request.json \
+        "https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}" > speech_result.json
 
-    # Install requirements and run
-    pip install google-cloud-speech google-cloud-storage --quiet
+    # Upload result to specified location
+    print_status "Uploading result to Cloud Storage..."
+    gsutil cp speech_result.json gs://$BUCKET_NAME/$SPEECH_OUTPUT
 
-    python3 speech_analysis.py
-
-    print_success "Task 3 completed. Speech analysis results saved."
+    print_success "Task 3 completed. Speech analysis results saved to gs://$BUCKET_NAME/$SPEECH_OUTPUT"
 }
 
 # Task 4: Use Cloud Natural Language API
 task4_natural_language() {
     print_status "Starting Task 4: Natural Language API..."
 
-    # Create bucket for results
-    gsutil mb -p $PROJECT_ID -l $REGION gs://$NL_BUCKET || print_warning "Bucket might already exist"
-
     # Create service account
     print_status "Creating service account for Natural Language API..."
-    gcloud iam service-accounts create nl-sa-gsp323 --display-name "NL Service Account" || print_warning "Service account might already exist"
+    gcloud iam service-accounts create nl-service-account --display-name "Natural Language Service Account" || print_warning "Service account might already exist"
 
+    # Grant Cloud Storage permissions
+    print_status "Granting Cloud Storage permissions to service account..."
+    gcloud projects add-iam-policy-binding $PROJECT_ID \
+        --member="serviceAccount:nl-service-account@$PROJECT_ID.iam.gserviceaccount.com" \
+        --role="roles/storage.objectAdmin" || print_warning "Permission might already be granted"
+
+    # Create service account key
+    print_status "Creating service account key..."
     gcloud iam service-accounts keys create ~/nl-key.json \
-        --iam-account nl-sa-gsp323@$PROJECT_ID.iam.gserviceaccount.com || print_warning "Key might already exist"
+        --iam-account nl-service-account@$PROJECT_ID.iam.gserviceaccount.com || print_warning "Key might already exist"
 
-    export GOOGLE_APPLICATION_CREDENTIALS=~/nl-key.json
+    export GOOGLE_APPLICATION_CREDENTIALS="/home/$USER/nl-key.json"
 
-    # Create Python script for Natural Language
-    cat > nl_analysis.py << 'EOF'
-from google.cloud import language_v1
-from google.cloud import storage
-import json
+    # Activate service account
+    print_status "Activating service account..."
+    gcloud auth activate-service-account nl-service-account@$PROJECT_ID.iam.gserviceaccount.com \
+        --key-file=$GOOGLE_APPLICATION_CREDENTIALS || print_warning "Service account might already be activated"
 
-def analyze_text():
-    """Analyze text using Natural Language API."""
-    client = language_v1.LanguageServiceClient()
+    # Run entity analysis
+    print_status "Running Natural Language entity analysis..."
+    gcloud ml language analyze-entities \
+        --content="Old Norse texts portray Odin as one-eyed and long-bearded, frequently wielding a spear named Gungnir and wearing a cloak and a broad hat." \
+        > nl_result.json
 
-    text_content = "Old Norse texts portray Odin as one-eyed and long-bearded, frequently wielding a spear named Gungnir and wearing a cloak and a broad hat."
+    # Upload result to specified location
+    print_status "Uploading result to Cloud Storage..."
+    gsutil cp nl_result.json gs://$BUCKET_NAME/$NL_OUTPUT
 
-    document = language_v1.Document(
-        content=text_content,
-        type_=language_v1.Document.Type.PLAIN_TEXT,
-        language="en"
-    )
-
-    # Analyze entities
-    entities_response = client.analyze_entities(document=document)
-    sentiment_response = client.analyze_sentiment(document=document)
-
-    # Prepare results
-    results = {
-        'text': text_content,
-        'entities': [],
-        'sentiment': {
-            'magnitude': sentiment_response.document_sentiment.magnitude,
-            'score': sentiment_response.document_sentiment.score
-        }
-    }
-
-    for entity in entities_response.entities:
-        results['entities'].append({
-            'name': entity.name,
-            'type': language_v1.Entity.Type(entity.type_).name,
-            'salience': entity.salience,
-            'mentions': len(entity.mentions)
-        })
-
-    # Save to Cloud Storage
-    storage_client = storage.Client()
-    bucket = storage_client.bucket('${NL_BUCKET}')
-    blob = bucket.blob('${NL_OUTPUT}')
-
-    blob.upload_from_string(json.dumps(results, indent=2), content_type='application/json')
-    print(f"Results saved to gs://${NL_BUCKET}/${NL_OUTPUT}")
-
-    print("Entities found:")
-    for entity in results['entities']:
-        print(f"- {entity['name']} ({entity['type']})")
-
-    return results
-
-if __name__ == "__main__":
-    analyze_text()
-EOF
-
-    # Replace variables in script
-    sed -i "s/\${NL_BUCKET}/$NL_BUCKET/g" nl_analysis.py
-    sed -i "s/\${NL_OUTPUT}/$NL_OUTPUT/g" nl_analysis.py
-
-    # Install requirements and run
-    pip install google-cloud-language google-cloud-storage --quiet
-
-    python3 nl_analysis.py
-
-    print_success "Task 4 completed. Natural Language analysis results saved."
+    print_success "Task 4 completed. Natural Language analysis results saved to gs://$BUCKET_NAME/$NL_OUTPUT"
 }
 
 # Cleanup function
@@ -371,21 +292,22 @@ cleanup() {
     print_status "Deleting Dataproc cluster..."
     gcloud dataproc clusters delete $CLUSTER_NAME --region=$REGION --quiet || print_warning "Failed to delete cluster"
 
-    # Delete buckets
-    print_status "Deleting Cloud Storage buckets..."
-    gsutil rm -r gs://$BUCKET_NAME || print_warning "Failed to delete bucket"
-    gsutil rm -r gs://$TEMP_BUCKET || print_warning "Failed to delete temp bucket"
-    gsutil rm -r gs://$SPEECH_BUCKET || print_warning "Failed to delete speech bucket"
-    gsutil rm -r gs://$NL_BUCKET || print_warning "Failed to delete NL bucket"
-
     # Delete BigQuery dataset
     print_status "Deleting BigQuery dataset..."
     bq rm -r -f $DATASET_NAME || print_warning "Failed to delete dataset"
 
     # Delete service accounts
     print_status "Deleting service accounts..."
-    gcloud iam service-accounts delete speech-sa-gsp323@$PROJECT_ID.iam.gserviceaccount.com --quiet || print_warning "Failed to delete speech SA"
-    gcloud iam service-accounts delete nl-sa-gsp323@$PROJECT_ID.iam.gserviceaccount.com --quiet || print_warning "Failed to delete NL SA"
+    gcloud iam service-accounts delete nl-service-account@$PROJECT_ID.iam.gserviceaccount.com --quiet || print_warning "Failed to delete NL SA"
+
+    # Delete API key
+    print_status "Deleting API key..."
+    gcloud alpha services api-keys delete $API_KEY_NAME --quiet || print_warning "Failed to delete API key"
+
+    # Clean up local files
+    print_status "Cleaning up local files..."
+    rm -f lab.csv lab.schema request.json speech_result.json nl_result.json
+    rm -f ~/speech-key.json ~/nl-key.json
 
     print_success "Cleanup completed"
 }

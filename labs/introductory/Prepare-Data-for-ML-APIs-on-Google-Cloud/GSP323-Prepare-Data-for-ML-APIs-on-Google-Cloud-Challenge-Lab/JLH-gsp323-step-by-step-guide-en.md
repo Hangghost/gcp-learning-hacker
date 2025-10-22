@@ -1,29 +1,29 @@
-# GSP323 - Prepare Data for ML APIs on Google Cloud: Challenge Lab - 逐步操作指南
+# GSP323 - Prepare Data for ML APIs on Google Cloud: Challenge Lab - Step-by-Step Guide
 
-## 實驗室概述
-這是基於 GSP097、GSP103、GSP119 和 GSP192 實驗室內容，為 GSP323 挑戰實驗室創建的實際操作指南。本指南將引導您完成所有 4 個任務。
+## Lab Overview
+This is a practical guide created for GSP323 Challenge Lab based on GSP097, GSP103, GSP119, and GSP192 labs. This guide will walk you through all 4 tasks.
 
-## 先決條件
-- Google Cloud 帳戶與實驗室憑證
-- 網際網路連線與 Chrome 瀏覽器
-- 基本的 GCP Console 操作知識
-- 熟悉命令行操作
+## Prerequisites
+- Google Cloud account and lab credentials
+- Internet connection and Chrome browser
+- Basic GCP Console operation knowledge
+- Familiarity with command-line operations
 
-## 預估時間
-60-90 分鐘
+## Estimated Time
+60-90 minutes
 
 ---
 
-## 初始設定
+## Initial Setup
 
-### 設定環境變數
+### Set Environment Variables
 ```bash
-# 設定專案和區域資訊
+# Set project and region information
 export REGION=""
 export PROJECT_ID=$(gcloud config get-value project)
 export PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="json" | jq -r '.projectNumber')
 
-# 設定資源名稱 (根據實際實驗室提供的值)
+# Set resource names (based on actual lab values)
 export BUCKET_NAME=""
 export SPEECH_BUCKET="${BUCKET_NAME}-speech"
 export NL_BUCKET="${BUCKET_NAME}-nl"
@@ -31,14 +31,14 @@ export DATASET_NAME=""
 export TABLE_NAME=""
 export CLUSTER_NAME="dataproc-cluster-$(date +%s)"
 
-# 輸出檔案名稱和路徑
+# Output file names and paths
 export SPEECH_OUTPUT=""
 export NL_OUTPUT=""
 ```
 
-### 啟用必要的 APIs
+### Enable Required APIs
 ```bash
-# 啟用所有需要的 APIs
+# Enable all required APIs
 gcloud services enable dataflow.googleapis.com
 gcloud services enable dataproc.googleapis.com
 gcloud services enable speech.googleapis.com
@@ -50,29 +50,29 @@ gcloud services enable apikeys.googleapis.com
 
 ---
 
-## 任務 1：運行簡單的 Dataflow 作業
+## Task 1: Run a Simple Dataflow Job
 
-### 步驟詳情
+### Step Details
 
-#### 1. 創建 BigQuery 資料集
+#### 1. Create BigQuery Dataset
 ```bash
 bq mk $DATASET_NAME
 ```
 
-#### 2. 創建 Cloud Storage Buckets
+#### 2. Create Cloud Storage Buckets
 ```bash
 gsutil mb -p $PROJECT_ID -l $REGION gs://$BUCKET_NAME
 ```
 
-#### 3. 複製實驗室文件到本地
+#### 3. Copy Lab Files Locally
 ```bash
 gsutil cp gs://spls/gsp323/lab.csv .
 gsutil cp gs://spls/gsp323/lab.schema .
 ```
 
-#### 4. 創建 BigQuery 表
+#### 4. Create BigQuery Table
 ```bash
-# 定義表結構
+# Define table schema
 cat > lab.schema << 'EOF'
 [
     {"type":"STRING","name":"guid"},
@@ -90,11 +90,11 @@ cat > lab.schema << 'EOF'
 ]
 EOF
 
-# 創建表
+# Create table
 bq mk --table $DATASET_NAME.$TABLE_NAME lab.schema
 ```
 
-#### 5. 運行 Dataflow 作業
+#### 5. Run Dataflow Job
 ```bash
 gcloud dataflow jobs run dataflow-lab-job \
     --gcs-location gs://dataflow-templates-$REGION/latest/GCS_Text_to_BigQuery \
@@ -110,31 +110,31 @@ javascriptTextTransformGcsPath=gs://spls/gsp323/lab.js,\
 javascriptTextTransformFunctionName=transform"
 ```
 
-### 驗證步驟
+### Verification Steps
 ```bash
-# 檢查 Dataflow 作業狀態
+# Check Dataflow job status
 gcloud dataflow jobs list --region=$REGION --filter="name:dataflow-lab-job"
 
-# 檢查 BigQuery 表是否創建
+# Check if BigQuery table was created
 bq ls $DATASET_NAME
 
-# 點擊 Check my progress 驗證任務 1
+# Click Check my progress to verify Task 1
 ```
 
 ---
 
-## 任務 2：運行簡單的 Dataproc 作業
+## Task 2: Run a Simple Dataproc Job
 
-### 步驟詳情
+### Step Details
 
-#### 1. 設定 IAM 權限
+#### 1. Set IAM Permissions
 ```bash
-# 為服務帳戶分配權限
+# Assign permissions to service account
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member "serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com" \
     --role "roles/storage.admin"
 
-# 設定用戶權限
+# Set user permissions
 export USER_EMAIL=$(gcloud config get-value account)
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member=user:$USER_EMAIL \
@@ -145,15 +145,15 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --role=roles/storage.objectViewer
 ```
 
-#### 2. 更新 VPC 子網路設定
+#### 2. Update VPC Subnet Settings
 ```bash
-# 啟用私有 IP 存取
+# Enable private IP access
 gcloud compute networks subnets update default \
     --region $REGION \
     --enable-private-ip-google-access
 ```
 
-#### 3. 創建 Dataproc 集群
+#### 3. Create Dataproc Cluster
 ```bash
 gcloud dataproc clusters create $CLUSTER_NAME \
     --enable-component-gateway \
@@ -169,29 +169,29 @@ gcloud dataproc clusters create $CLUSTER_NAME \
     --project $PROJECT_ID
 ```
 
-#### 4. 複製數據文件到集群
+#### 4. Copy Data File to Cluster
 ```bash
-# 方法 1: 直接使用集群名稱 (推薦 - 更簡單)
-echo "正在複製數據文件到集群..."
-# 首先獲取集群的區域和網路資訊
+# Method 1: SSH directly using cluster name (recommended - simpler)
+echo "Copying data file to cluster..."
+# First get cluster zone and network information
 CLUSTER_ZONE=$(gcloud dataproc clusters describe $CLUSTER_NAME --region=$REGION --format="value(config.gceClusterConfig.zoneUri)" | awk -F/ '{print $NF}')
 CLUSTER_NETWORK=$(gcloud dataproc clusters describe $CLUSTER_NAME --region=$REGION --format="value(config.gceClusterConfig.networkUri)" | awk -F/ '{print $NF}')
 
-# 使用正確的區域 SSH 到集群
+# SSH to cluster using correct zone
 gcloud compute ssh $CLUSTER_NAME-m --zone=$CLUSTER_ZONE --command="hdfs dfs -cp gs://spls/gsp323/data.txt /data.txt"
 
-# 方法 2: 如果方法 1 不行，使用手動方式
-# 首先檢查集群狀態
-echo "檢查集群狀態..."
+# Method 2: If method 1 doesn't work, use manual approach
+# First check cluster status
+echo "Checking cluster status..."
 gcloud dataproc clusters describe $CLUSTER_NAME --region=$REGION
 
-# 然後手動 SSH (如果集群已啟動但 SSH 有問題)
+# Then manual SSH (if cluster is running but SSH has issues)
 # VM_NAME=$(gcloud compute instances list --project="$PROJECT_ID" --format=json | jq -r '.[0].name')
 # ZONE=$(gcloud compute instances list --filter="name=$VM_NAME" --format 'csv[no-heading](zone)')
 # gcloud compute ssh --zone "$ZONE" "$VM_NAME" --project "$PROJECT_ID" --command="hdfs dfs -cp gs://spls/gsp323/data.txt /data.txt"
 ```
 
-#### 5. 提交 Spark 作業
+#### 5. Submit Spark Job
 ```bash
 gcloud dataproc jobs submit spark \
     --cluster=$CLUSTER_NAME \
@@ -202,35 +202,35 @@ gcloud dataproc jobs submit spark \
     -- /data.txt
 ```
 
-### 驗證步驟
+### Verification Steps
 ```bash
-# 檢查 Dataproc 作業狀態
+# Check Dataproc job status
 gcloud dataproc jobs list --region=$REGION --cluster=$CLUSTER_NAME
 
-# 點擊 Check my progress 驗證任務 2
+# Click Check my progress to verify Task 2
 ```
 
 ---
 
-## 任務 3：使用 Google Cloud Speech-to-Text API
+## Task 3: Use Google Cloud Speech-to-Text API
 
-### 步驟詳情
+### Step Details
 
-#### 1. 創建 API 金鑰
+#### 1. Create API Key
 ```bash
-# 創建 API 金鑰
+# Create API key
 gcloud alpha services api-keys create --display-name="speech-api-key"
 API_KEY_NAME=$(gcloud alpha services api-keys list --format="value(name)" --filter "displayName=speech-api-key")
 API_KEY=$(gcloud alpha services api-keys get-key-string $API_KEY_NAME --format="value(keyString)")
 ```
 
-#### 2. 確認主 Cloud Storage Bucket 存在
+#### 2. Confirm Main Cloud Storage Bucket Exists
 ```bash
-# 主 bucket 已在任務 1 中創建，這裡確認它存在
+# Main bucket was created in Task 1, confirm it exists here
 gsutil ls gs://$BUCKET_NAME
 ```
 
-#### 3. 創建 Speech-to-Text API 請求文件
+#### 3. Create Speech-to-Text API Request File
 ```bash
 cat > request.json <<EOF
 {
@@ -245,160 +245,160 @@ cat > request.json <<EOF
 EOF
 ```
 
-#### 4. 調用 Speech-to-Text API
+#### 4. Call Speech-to-Text API
 ```bash
 curl -s -X POST -H "Content-Type: application/json" \
     --data-binary @request.json \
     "https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}" > speech_result.json
 ```
 
-#### 5. 上傳結果到指定的 Cloud Storage 位置
+#### 5. Upload Results to Specified Cloud Storage Location
 ```bash
 gsutil cp speech_result.json gs://$BUCKET_NAME/$SPEECH_OUTPUT
 ```
 
-### 驗證步驟
+### Verification Steps
 ```bash
-# 檢查結果文件
+# Check result file
 gsutil cat gs://$BUCKET_NAME/$SPEECH_OUTPUT
 
-# 點擊 Check my progress 驗證任務 3
+# Click Check my progress to verify Task 3
 ```
 
 ---
 
-## 任務 4：使用 Cloud Natural Language API
+## Task 4: Use Cloud Natural Language API
 
-### 步驟詳情
+### Step Details
 
-#### 1. 創建服務帳戶和設定權限
+#### 1. Create Service Account and Set Permissions
 ```bash
-# 創建服務帳戶
+# Create service account
 gcloud iam service-accounts create nl-service-account \
     --display-name "Natural Language Service Account"
 
-# 為服務帳戶分配 Cloud Storage 權限
+# Grant Cloud Storage permissions to service account
 gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member="serviceAccount:nl-service-account@$PROJECT_ID.iam.gserviceaccount.com" \
     --role="roles/storage.objectAdmin"
 
-# 創建服務帳戶金鑰
+# Create service account key
 gcloud iam service-accounts keys create ~/nl-key.json \
     --iam-account nl-service-account@$PROJECT_ID.iam.gserviceaccount.com
 
 export GOOGLE_APPLICATION_CREDENTIALS="/home/$USER/nl-key.json"
 ```
 
-#### 2. 設定服務帳戶認證
+#### 2. Set Service Account Authentication
 ```bash
-# 切換到服務帳戶
+# Switch to service account
 gcloud auth activate-service-account nl-service-account@$PROJECT_ID.iam.gserviceaccount.com \
     --key-file=$GOOGLE_APPLICATION_CREDENTIALS
 ```
 
-#### 3. 確認主 Cloud Storage Bucket 存在
+#### 3. Confirm Main Cloud Storage Bucket Exists
 ```bash
-# 主 bucket 已在任務 1 中創建，這裡確認它存在
+# Main bucket was created in Task 1, confirm it exists here
 gsutil ls gs://$BUCKET_NAME
 ```
 
-#### 4. 運行 Natural Language 實體分析
+#### 4. Run Natural Language Entity Analysis
 ```bash
 gcloud ml language analyze-entities \
     --content="Old Norse texts portray Odin as one-eyed and long-bearded, frequently wielding a spear named Gungnir and wearing a cloak and a broad hat." \
     > nl_result.json
 ```
 
-#### 5. 上傳結果到指定的 Cloud Storage 位置
+#### 5. Upload Results to Specified Cloud Storage Location
 ```bash
 gsutil cp nl_result.json gs://$BUCKET_NAME/$NL_OUTPUT
 ```
 
-### 驗證步驟
+### Verification Steps
 ```bash
-# 檢查結果文件
+# Check result file
 gsutil cat gs://$BUCKET_NAME/$NL_OUTPUT
 
-# 點擊 Check my progress 驗證任務 4
+# Click Check my progress to verify Task 4
 ```
 
 ---
 
-## 清理資源
+## Cleanup Resources
 
-完成所有任務後，運行以下指令清理資源以避免額外費用：
+After completing all tasks, run the following commands to clean up resources and avoid additional charges:
 
 ```bash
-# 刪除 Dataproc 集群
+# Delete Dataproc cluster
 gcloud dataproc clusters delete $CLUSTER_NAME --region=$REGION --quiet
 
-# 刪除 Cloud Storage buckets (注意：保留主 bucket，因為它包含實驗結果)
-# gsutil rm -r gs://$BUCKET_NAME  # 不要刪除，此 bucket 包含任務結果
+# Delete Cloud Storage buckets (Note: Keep main bucket as it contains task results)
+# gsutil rm -r gs://$BUCKET_NAME  # Do not delete, this bucket contains task results
 
-# 刪除 BigQuery 資料集
+# Delete BigQuery dataset
 bq rm -r -f $DATASET_NAME
 
-# 刪除服務帳戶
+# Delete service accounts
 gcloud iam service-accounts delete nl-service-account@$PROJECT_ID.iam.gserviceaccount.com --quiet
 
-# 刪除 API 金鑰
+# Delete API key
 gcloud alpha services api-keys delete $API_KEY_NAME --quiet
 
-# 清理本地文件
+# Clean up local files
 rm -f lab.csv lab.schema request.json speech_result.json nl_result.json
 rm -f ~/speech-key.json ~/nl-key.json
 ```
 
-## 故障排除
+## Troubleshooting
 
-### 常見問題
+### Common Issues
 
-1. **Dataflow 作業失敗**
-   - 檢查區域設定是否正確
-   - 確保 Cloud Storage bucket 存在
-   - 驗證 BigQuery 資料集權限
+1. **Dataflow job failure**
+   - Check if region settings are correct
+   - Ensure Cloud Storage bucket exists
+   - Verify BigQuery dataset permissions
 
-2. **Dataproc 集群創建失敗**
-   - 檢查網路設定
-   - 確保服務帳戶有足夠權限
-   - 驗證區域配額
+2. **Dataproc cluster creation failure**
+   - Check network settings
+   - Ensure service account has sufficient permissions
+   - Verify regional quotas
 
-3. **Speech-to-Text API 錯誤**
-   - 檢查 API 是否已啟用
-   - 驗證服務帳戶金鑰
-   - 確保音頻文件格式正確
+3. **Speech-to-Text API errors**
+   - Check if API is enabled
+   - Verify service account key
+   - Ensure audio file format is correct
 
-4. **Natural Language API 錯誤**
-   - 檢查 API 是否已啟用
-   - 驗證服務帳戶權限
-   - 確認文本格式正確
+4. **Natural Language API errors**
+   - Check if API is enabled
+   - Verify service account permissions
+   - Confirm text format is correct
 
-### 參考資源
-- [Dataflow 文檔](https://cloud.google.com/dataflow/docs)
-- [Dataproc 文檔](https://cloud.google.com/dataproc/docs)
-- [Speech-to-Text API 文檔](https://cloud.google.com/speech-to-text/docs)
-- [Natural Language API 文檔](https://cloud.google.com/natural-language/docs)
+### Reference Resources
+- [Dataflow Documentation](https://cloud.google.com/dataflow/docs)
+- [Dataproc Documentation](https://cloud.google.com/dataproc/docs)
+- [Speech-to-Text API Documentation](https://cloud.google.com/speech-to-text/docs)
+- [Natural Language API Documentation](https://cloud.google.com/natural-language/docs)
 
 ---
 
-## 恭喜！
+## Congratulations!
 
-恭喜您完成了 GSP323 Prepare Data for ML APIs on Google Cloud: Challenge Lab！
+Congratulations on completing GSP323 Prepare Data for ML APIs on Google Cloud: Challenge Lab!
 
-在此實驗室中，您已經展示了您的技能：
-- ✅ 運行簡單的 Dataflow 作業
-- ✅ 運行簡單的 Dataproc 作業
-- ✅ 使用 Google Cloud Speech-to-Text API
-- ✅ 使用 Cloud Natural Language API
+In this lab, you have demonstrated your skills by:
+- ✅ Running a simple Dataflow job
+- ✅ Running a simple Dataproc job
+- ✅ Using Google Cloud Speech-to-Text API
+- ✅ Using Cloud Natural Language API
 
-**重要提醒**：
-- 記得運行清理資源部分以避免額外費用（注意：保留主 bucket 因為它包含任務結果）
-- 所有操作都是通過命令行完成的，熟悉這些指令將有助於您的 GCP 學習之旅
-- CLUSTER_NAME 使用時間戳自動生成，確保每次運行都有唯一名稱
+**Important Reminders**:
+- Remember to run the cleanup resources section to avoid additional charges (Note: Keep main bucket as it contains task results)
+- All operations are performed through command line, familiarizing yourself with these commands will help your GCP learning journey
+- CLUSTER_NAME is auto-generated with timestamp to ensure uniqueness for each run
 
-**變數說明**：
-- `BUCKET_NAME`: 根據實際實驗室提供，格式為 `{PROJECT_ID}-marking`
-- `CLUSTER_NAME`: 自動生成為 `dataproc-cluster-{timestamp}` 以確保唯一性
-- 結果文件會上傳到指定的 Cloud Storage 路徑供驗證使用
+**Variable Explanations**:
+- `BUCKET_NAME`: Based on actual lab provided, format is `{PROJECT_ID}-marking`
+- `CLUSTER_NAME`: Auto-generated as `dataproc-cluster-{timestamp}` to ensure uniqueness
+- Result files are uploaded to specified Cloud Storage paths for verification
 
-繼續您的 Google Cloud 學習之旅！
+Continue your Google Cloud learning journey!
