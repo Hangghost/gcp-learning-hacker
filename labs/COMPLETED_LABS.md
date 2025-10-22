@@ -45,6 +45,7 @@
 | GSP154 | Video Intelligence: Qwik Start | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP154-Video-Intelligence-Qwik-Start/ |
 | GSP192 | Dataflow: Qwik Start - Templates | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP192-Dataflow-Qwik-Start-Templates/ |
 | GSP207 | Dataflow: Qwik Start - Python | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP207-Dataflow-Qwik-Start-Python/ |
+| GSP323 | Prepare Data for ML APIs on Google Cloud: Challenge Lab | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP323-Prepare-Data-for-ML-APIs-on-Google-Cloud-Challenge-Lab/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -106,6 +107,7 @@
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
 - bb-ide-genai-004: Build a Multi-Modal GenAI Application: Challenge Lab
+- GSP323: Prepare Data for ML APIs on Google Cloud: Challenge Lab
 
 ### 資料分析與準備 (Data Analysis & Preparation)
 - GSP105: Dataprep: Qwik Start

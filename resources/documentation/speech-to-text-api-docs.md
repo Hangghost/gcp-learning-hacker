@@ -54,6 +54,7 @@ documentation
 
 ## Related Labs
 - GSP119: Speech-to-Text API: Qwik Start
+- GSP323: Prepare Data for ML APIs on Google Cloud: Challenge Lab
 - GSP097: Cloud Natural Language API: Qwik Start
 
 ## Best Practices

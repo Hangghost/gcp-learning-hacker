@@ -22,6 +22,7 @@ documentation
 
 ## Related Labs
 - GSP097: Cloud Natural Language API: Qwik Start
+- GSP323: Prepare Data for ML APIs on Google Cloud: Challenge Lab
 
 ## Key Features Covered
 - Entity Recognition: Identify entities like people, places, and organizations
