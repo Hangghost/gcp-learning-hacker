@@ -24,7 +24,7 @@ export PROJECT_ID=$(gcloud config get-value project)
 export PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="json" | jq -r '.projectNumber')
 
 # Set resource names (based on actual lab values)
-export BUCKET_NAME=""
+export BUCKET_NAME="${PROJECT_ID}-marking"
 export SPEECH_BUCKET="${BUCKET_NAME}-speech"
 export NL_BUCKET="${BUCKET_NAME}-nl"
 export DATASET_NAME=""
@@ -66,8 +66,8 @@ gsutil mb -p $PROJECT_ID -l $REGION gs://$BUCKET_NAME
 
 #### 3. Copy Lab Files Locally
 ```bash
-gsutil cp gs://spls/gsp323/lab.csv .
-gsutil cp gs://spls/gsp323/lab.schema .
+gsutil cp gs://cloud-training/gsp323/lab.csv .
+gsutil cp gs://cloud-training/gsp323/lab.schema .
 ```
 
 #### 4. Create BigQuery Table
@@ -102,11 +102,11 @@ gcloud dataflow jobs run dataflow-lab-job \
     --worker-machine-type e2-standard-2 \
     --staging-location gs://$BUCKET_NAME/temp \
     --parameters \
-"inputFilePattern=gs://spls/gsp323/lab.csv,\
+"inputFilePattern=gs://cloud-training/gsp323/lab.csv,\
 outputTable=$PROJECT_ID:$DATASET_NAME.$TABLE_NAME,\
 bigQueryLoadingTemporaryDirectory=gs://$BUCKET_NAME/bigquery_temp,\
-JSONPath=gs://spls/gsp323/lab.schema,\
-javascriptTextTransformGcsPath=gs://spls/gsp323/lab.js,\
+JSONPath=gs://cloud-training/gsp323/lab.schema,\
+javascriptTextTransformGcsPath=gs://cloud-training/gsp323/lab.js,\
 javascriptTextTransformFunctionName=transform"
 ```
 
@@ -212,6 +212,17 @@ gcloud dataproc jobs list --region=$REGION --cluster=$CLUSTER_NAME
 
 ---
 
+## Important: Re-authenticate Before Task 3
+
+**Before starting Task 3, you need to switch back to your original user account to create API keys:**
+
+```bash
+# Switch back to your original user account (not the service account)
+gcloud auth login --no-launch-browser --quiet
+```
+
+---
+
 ## Task 3: Use Google Cloud Speech-to-Text API
 
 ### Step Details
@@ -221,7 +232,7 @@ gcloud dataproc jobs list --region=$REGION --cluster=$CLUSTER_NAME
 # Create API key
 gcloud alpha services api-keys create --display-name="speech-api-key"
 API_KEY_NAME=$(gcloud alpha services api-keys list --format="value(name)" --filter "displayName=speech-api-key")
-API_KEY=$(gcloud alpha services api-keys get-key-string $API_KEY_NAME --format="value(keyString)")
+API_KEY=$(gcloud alpha services api-keys get-key-string $API_KEY_NAME --location=global --format="value(keyString)")
 ```
 
 #### 2. Confirm Main Cloud Storage Bucket Exists
@@ -239,7 +250,7 @@ cat > request.json <<EOF
       "languageCode": "en-US"
   },
   "audio": {
-      "uri":"gs://spls/gsp323/task3.flac"
+      "uri":"gs://cloud-training/gsp323/task3.flac"
   }
 }
 EOF
@@ -397,8 +408,15 @@ In this lab, you have demonstrated your skills by:
 - CLUSTER_NAME is auto-generated with timestamp to ensure uniqueness for each run
 
 **Variable Explanations**:
-- `BUCKET_NAME`: Based on actual lab provided, format is `{PROJECT_ID}-marking`
+- `BUCKET_NAME`: Auto-set to `{PROJECT_ID}-marking` (do not change)
+- `DATASET_NAME`: Must be set to the actual dataset name provided in the lab
+- `TABLE_NAME`: Must be set to the actual table name provided in the lab
+- `REGION`: Must be set to the actual region provided in the lab
+- `SPEECH_OUTPUT`: Must be set to the actual speech output file path provided in the lab
+- `NL_OUTPUT`: Must be set to the actual natural language output file path provided in the lab
 - `CLUSTER_NAME`: Auto-generated as `dataproc-cluster-{timestamp}` to ensure uniqueness
 - Result files are uploaded to specified Cloud Storage paths for verification
+
+**Important**: Make sure to fill in the empty variables (`DATASET_NAME`, `TABLE_NAME`, `REGION`, `SPEECH_OUTPUT`, `NL_OUTPUT`) with the actual values provided in your lab before starting.
 
 Continue your Google Cloud learning journey!
