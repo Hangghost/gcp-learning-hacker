@@ -50,6 +50,7 @@
 | GSP919 | Connect an App to a Cloud SQL for PostgreSQL Instance | 2025-10-28 | introductory/GSP919-connect-app-to-cloud-sql-postgresql-instance/ |
 | GSP920 | Securing a Cloud SQL for PostgreSQL Instance | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP920-securing-a-cloud-sql-for-postgresql-instance/ |
 || GSP922 | Configure Replication and Enable Point-in-Time Recovery for Cloud SQL for PostgreSQL | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP922-configure-replication-enable-point-in-time-recovery-for-cloud-sql-postgresql/ |
+| GSP355 | Create and Manage Cloud SQL for PostgreSQL Instances: Challenge Lab | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP355-create-and-manage-cloud-sql-postgresql-challenge-lab/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -59,8 +60,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 33 個 labs
-- **Introductory**: 33 個
+- **總計完成**: 34 個 labs
+- **Introductory**: 34 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -125,6 +126,7 @@
 - GSP207: Dataflow: Qwik Start - Python
 
 ### 數據庫遷移 (Database Migration)
+- GSP355: Create and Manage Cloud SQL for PostgreSQL Instances: Challenge Lab
 - GSP918: Create and Manage Cloud SQL for PostgreSQL Instances
 - GSP919: Connect an App to a Cloud SQL for PostgreSQL Instance
 
