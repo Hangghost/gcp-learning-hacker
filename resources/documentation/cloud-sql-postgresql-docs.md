@@ -23,6 +23,8 @@ documentation
 
 ## Related Labs
 - GSP918: Create and Manage Cloud SQL for PostgreSQL Instances
+- GSP919: Connect an App to a Cloud SQL for PostgreSQL Instance
+- GSP920: Securing a Cloud SQL for PostgreSQL Instance
 
 ## Notes
 Cloud SQL for PostgreSQL features:

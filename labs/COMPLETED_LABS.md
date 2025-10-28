@@ -48,6 +48,7 @@
 | GSP323 | Prepare Data for ML APIs on Google Cloud: Challenge Lab | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP323-Prepare-Data-for-ML-APIs-on-Google-Cloud-Challenge-Lab/ |
 | GSP918 | Create and Manage Cloud SQL for PostgreSQL Instances | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/ |
 | GSP919 | Connect an App to a Cloud SQL for PostgreSQL Instance | 2025-10-28 | introductory/GSP919-connect-app-to-cloud-sql-postgresql-instance/ |
+| GSP920 | Securing a Cloud SQL for PostgreSQL Instance | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP920-securing-a-cloud-sql-for-postgresql-instance/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -57,8 +58,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 31 個 labs
-- **Introductory**: 31 個
+- **總計完成**: 32 個 labs
+- **Introductory**: 32 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -125,6 +126,9 @@
 ### 數據庫遷移 (Database Migration)
 - GSP918: Create and Manage Cloud SQL for PostgreSQL Instances
 - GSP919: Connect an App to a Cloud SQL for PostgreSQL Instance
+
+### 資料庫安全 (Database Security)
+- GSP920: Securing a Cloud SQL for PostgreSQL Instance
 
 ## 更新說明
 
