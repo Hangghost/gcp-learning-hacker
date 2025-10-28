@@ -48,16 +48,19 @@
 | GSP323 | Prepare Data for ML APIs on Google Cloud: Challenge Lab | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP323-Prepare-Data-for-ML-APIs-on-Google-Cloud-Challenge-Lab/ |
 
 ### Intermediate Level
-*目前無已完成的 intermediate level labs*
+
+| GSP 編號 | 標題 | 完成日期 | 檔案位置 |
+|----------|------|----------|----------|
+| GSP918 | Create and Manage Cloud SQL for PostgreSQL Instances | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
 
 ## 統計摘要
 
-- **總計完成**: 29 個 labs
+- **總計完成**: 30 個 labs
 - **Beginner**: 29 個
-- **Intermediate**: 0 個
+- **Intermediate**: 1 個
 - **Advanced**: 0 個
 
 ## 主題分類
@@ -119,6 +122,9 @@
 ### Dataflow (串流資料處理)
 - GSP192: Dataflow: Qwik Start - Templates
 - GSP207: Dataflow: Qwik Start - Python
+
+### 數據庫遷移 (Database Migration)
+- GSP918: Create and Manage Cloud SQL for PostgreSQL Instances
 
 ## 更新說明
 
