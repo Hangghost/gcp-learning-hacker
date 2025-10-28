@@ -1,4 +1,4 @@
-# GSP918 - Create and Manage Cloud SQL for PostgreSQL Instances
+# GSP918 - Migrate to Cloud SQL for PostgreSQL using Database Migration Service
 
 ## Lab Overview
 This lab will guide you through using Google Cloud Database Migration Service to migrate a standalone PostgreSQL database to Cloud SQL for PostgreSQL. You will set up the source database, create a migration job, test continuous migration, and finally promote the Cloud SQL instance to be a standalone instance.

@@ -23,6 +23,7 @@ documentation
 - GSP089: Cloud Monitoring Qwik Start
 - GSP064: Cloud IAM Qwik Start
 - GSP007: Set Up Network Load Balancers
+- GSP919: Connect an App to a Cloud SQL for PostgreSQL Instance
 
 ## Notes
 Regions are specific geographical locations where you can run your resources. Each region has one or more zones. Understanding regions and zones is fundamental for deploying resilient and performant GCP applications.
