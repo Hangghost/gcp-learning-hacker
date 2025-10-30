@@ -34,6 +34,7 @@
 | GSP072 | BigQuery: Qwik Start - Console | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP072-bigquery-qwik-start-console/ |
 | GSP870 | Connected Sheets: Qwik Start | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/GSP870-Connected-Sheets-Qwik-Start/ |
 | ARC103 | Analyze BigQuery Data in Connected Sheets: Challenge Lab | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/ARC103-analyze-bigquery-data-connected-sheets-challenge-lab/ |
+| GSP1151 | Generative AI with Vertex AI: Prompt Design | 2025-10-30 | introductory/GSP1151-generative-ai-with-vertex-ai-prompt-design/ |
 | bb-ide-genai-001 | Build an AI Image Recognition app using Gemini on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-001-build-ai-image-recognition-gemini/ |
 | bb-ide-genai-002 | Build an AI Image Generator app using Imagen on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-002-build-ai-image-generator-imagen/ |
 | bb-ide-genai-003 | Build an application to send Chat Prompts using the Gemini model | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-003-build-ai-chat-gemini/ |
@@ -55,8 +56,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 29 個 labs
-- **Beginner**: 29 個
+- **總計完成**: 30 個 labs
+- **Beginner**: 30 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -102,6 +103,7 @@
 
 ### AI 應用開發 (AI Applications)
 - GSP097: Cloud Natural Language API: Qwik Start
+- GSP1151: Generative AI with Vertex AI: Prompt Design
 - GSP119: Speech-to-Text API: Qwik Start
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
