@@ -22,6 +22,7 @@ documentation
 - Interest in content authenticity and provenance
 
 ## Related Labs
+- GSP1154: Get Started with Vertex AI Studio
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 
 ## Notes
