@@ -36,6 +36,7 @@
 | ARC103 | Analyze BigQuery Data in Connected Sheets: Challenge Lab | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/ARC103-analyze-bigquery-data-connected-sheets-challenge-lab/ |
 | GSP1151 | Generative AI with Vertex AI: Prompt Design | 2025-10-30 | introductory/Prompt-Design-in-Vertex-AI/GSP1151-generative-ai-with-vertex-ai-prompt-design/ |
 | GSP1154 | Get Started with Vertex AI Studio | 2025-10-30 | introductory/Prompt-Design-in-Vertex-AI/GSP1154-get-started-with-vertex-ai-studio/ |
+| GSP1209 | Getting Started with Google Generative AI Using the Gen AI SDK | 2025-10-30 | introductory/Prompt-Design-in-Vertex-AI/GSP1209-getting-started-with-google-generative-ai-using-gen-ai-sdk/ |
 | bb-ide-genai-001 | Build an AI Image Recognition app using Gemini on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-001-build-ai-image-recognition-gemini/ |
 | bb-ide-genai-002 | Build an AI Image Generator app using Imagen on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-002-build-ai-image-generator-imagen/ |
 | bb-ide-genai-003 | Build an application to send Chat Prompts using the Gemini model | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-003-build-ai-chat-gemini/ |
@@ -57,8 +58,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 31 個 labs
-- **Beginner**: 31 個
+- **總計完成**: 32 個 labs
+- **Beginner**: 32 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -106,6 +107,7 @@
 - GSP097: Cloud Natural Language API: Qwik Start
 - GSP1151: Generative AI with Vertex AI: Prompt Design
 - GSP1154: Get Started with Vertex AI Studio
+- GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
 - GSP119: Speech-to-Text API: Qwik Start
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI

@@ -1,7 +1,7 @@
-# Google Cloud Generative AI GitHub Repository
+# Google Cloud Generative AI Repository
 
 ## Description
-Official GitHub repository containing sample code, tutorials, and resources for building applications with Google Cloud's generative AI services, including Vertex AI and Gemini models.
+Official GitHub repository containing samples, notebooks, and code examples for building applications with Google Cloud's generative AI services and models.
 
 ## URL
 https://github.com/GoogleCloudPlatform/generative-ai
@@ -10,29 +10,24 @@ https://github.com/GoogleCloudPlatform/generative-ai
 tools
 
 ## Target Audience
-- AI Application Developers
-- Machine Learning Engineers
-- Open source contributors
-- Developers exploring Google Cloud AI services
+- Application developers
+- AI engineers
+- Students learning generative AI
+- Researchers exploring AI implementations
 
 ## Prerequisites
 - Git and GitHub account
 - Python programming skills
-- Google Cloud account (for running examples)
-- Basic understanding of generative AI concepts
+- GCP account for testing examples
 
 ## Related Labs
-- GSP1151: Generative AI with Vertex AI: Prompt Design
-- bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
-- bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
-- bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
+- GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
 
 ## Notes
 Repository contents:
-- **Sample Applications**: Complete working examples for various AI use cases
-- **Code Samples**: Snippets and utilities for common tasks
-- **Tutorials**: Step-by-step guides for implementing AI features
-- **Best Practices**: Code patterns and architectural recommendations
-- **Integration Examples**: Connecting AI services with other Google Cloud products
+- **Sample Applications**: Complete working examples of AI applications
+- **Code Snippets**: Reusable code for common AI tasks
+- **Integration Examples**: How to combine generative AI with other GCP services
+- **Best Practices**: Implementation patterns and optimization techniques
 
-Languages supported: Python, Node.js, Java, Go. Includes examples for web applications, mobile apps, and backend services.
+Regularly updated with new examples covering the latest AI capabilities and integration patterns.
