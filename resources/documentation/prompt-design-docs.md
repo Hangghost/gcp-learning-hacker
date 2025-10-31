@@ -22,6 +22,7 @@ documentation
 
 ## Related Labs
 - GSP1151: Generative AI with Vertex AI: Prompt Design
+- GSP519: Prompt Design in Vertex AI: Challenge Lab
 
 ## Notes
 Key topics covered:

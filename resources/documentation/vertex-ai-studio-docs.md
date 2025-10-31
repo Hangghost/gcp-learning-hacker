@@ -24,6 +24,7 @@ documentation
 ## Related Labs
 - GSP1151: Generative AI with Vertex AI: Prompt Design
 - GSP1154: Get Started with Vertex AI Studio
+- GSP519: Prompt Design in Vertex AI: Challenge Lab
 
 ## Notes
 Key features and capabilities:
