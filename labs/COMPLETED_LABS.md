@@ -11,7 +11,7 @@
 
 ## 已完成 Labs 列表
 
-### Beginner Level
+### Introductory Level
 
 | GSP 編號 | 標題 | 完成日期 | 檔案位置 |
 |----------|------|----------|----------|
@@ -50,6 +50,11 @@
 | GSP192 | Dataflow: Qwik Start - Templates | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP192-Dataflow-Qwik-Start-Templates/ |
 | GSP207 | Dataflow: Qwik Start - Python | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP207-Dataflow-Qwik-Start-Python/ |
 | GSP323 | Prepare Data for ML APIs on Google Cloud: Challenge Lab | 2025-10-22 | introductory/Prepare-Data-for-ML-APIs-on-Google-Cloud/GSP323-Prepare-Data-for-ML-APIs-on-Google-Cloud-Challenge-Lab/ |
+| GSP918 | Create and Manage Cloud SQL for PostgreSQL Instances | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/ |
+| GSP919 | Connect an App to a Cloud SQL for PostgreSQL Instance | 2025-10-28 | introductory/GSP919-connect-app-to-cloud-sql-postgresql-instance/ |
+| GSP920 | Securing a Cloud SQL for PostgreSQL Instance | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP920-securing-a-cloud-sql-for-postgresql-instance/ |
+|| GSP922 | Configure Replication and Enable Point-in-Time Recovery for Cloud SQL for PostgreSQL | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP922-configure-replication-enable-point-in-time-recovery-for-cloud-sql-postgresql/ |
+| GSP355 | Create and Manage Cloud SQL for PostgreSQL Instances: Challenge Lab | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP355-create-and-manage-cloud-sql-postgresql-challenge-lab/ |
 
 ### Intermediate Level
 *目前無已完成的 intermediate level labs*
@@ -59,8 +64,8 @@
 
 ## 統計摘要
 
-- **總計完成**: 33 個 labs
-- **Beginner**: 33 個
+- **總計完成**: 34 個 labs
+- **Introductory**: 34 個
 - **Intermediate**: 0 個
 - **Advanced**: 0 個
 
@@ -127,6 +132,15 @@
 ### Dataflow (串流資料處理)
 - GSP192: Dataflow: Qwik Start - Templates
 - GSP207: Dataflow: Qwik Start - Python
+
+### 數據庫遷移 (Database Migration)
+- GSP355: Create and Manage Cloud SQL for PostgreSQL Instances: Challenge Lab
+- GSP918: Create and Manage Cloud SQL for PostgreSQL Instances
+- GSP919: Connect an App to a Cloud SQL for PostgreSQL Instance
+
+### 資料庫安全 (Database Security)
+- GSP920: Securing a Cloud SQL for PostgreSQL Instance
+- GSP922: Configure Replication and Enable Point-in-Time Recovery for Cloud SQL for PostgreSQL
 
 ## 更新說明
 
