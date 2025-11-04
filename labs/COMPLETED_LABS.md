@@ -57,16 +57,19 @@
 | GSP355 | Create and Manage Cloud SQL for PostgreSQL Instances: Challenge Lab | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP355-create-and-manage-cloud-sql-postgresql-challenge-lab/ |
 
 ### Intermediate Level
-*目前無已完成的 intermediate level labs*
+
+| GSP 編號 | 標題 | 完成日期 | 檔案位置 |
+|----------|------|----------|----------|
+| GSP1328 | Create API Gateways with Gemini | 2025-11-04 | intermediate/GSP1328-Create-API-Gateways-with-Gemini/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
 
 ## 統計摘要
 
-- **總計完成**: 34 個 labs
+- **總計完成**: 35 個 labs
 - **Introductory**: 34 個
-- **Intermediate**: 0 個
+- **Intermediate**: 1 個
 - **Advanced**: 0 個
 
 ## 主題分類
@@ -116,6 +119,7 @@
 - GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
 - GSP519: Prompt Design in Vertex AI: Challenge Lab
 - GSP119: Speech-to-Text API: Qwik Start
+- GSP1328: Create API Gateways with Gemini
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
