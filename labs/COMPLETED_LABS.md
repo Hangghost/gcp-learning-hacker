@@ -62,15 +62,16 @@
 |----------|------|----------|----------|
 | GSP1328 | Create API Gateways with Gemini | 2025-11-04 | intermediate/GSP1328-Create-API-Gateways-with-Gemini/ |
 | GSP1329 | Code Generation with Gemini | 2025-11-04 | intermediate/GSP1329-Code-Generation-with-Gemini/ |
+| GSP1330 | Unit Testing with Gemini | 2025-11-04 | intermediate/GSP1330-Unit-Testing-with-Gemini/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
 
 ## 統計摘要
 
-- **總計完成**: 36 個 labs
+- **總計完成**: 37 個 labs
 - **Introductory**: 34 個
-- **Intermediate**: 2 個
+- **Intermediate**: 3 個
 - **Advanced**: 0 個
 
 ## 主題分類
@@ -122,6 +123,7 @@
 - GSP119: Speech-to-Text API: Qwik Start
 - GSP1328: Create API Gateways with Gemini
 - GSP1329: Code Generation with Gemini
+- GSP1330: Unit Testing with Gemini
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
