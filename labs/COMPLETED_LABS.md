@@ -64,15 +64,16 @@
 | GSP650 | Build a Resilient, Asynchronous System with Cloud Run and Pub/Sub | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
 | GSP761 | Developing a REST API with Go and Cloud Run | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
 | GSP762 | Creating PDFs with Go and Cloud Run | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
+| GSP328 | Develop Serverless Applications on Cloud Run: Challenge Lab | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/GSP328/ (See JLH-gsp328-step-by-step-guide.md) |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
 
 ## 統計摘要
 
-- **總計完成**: 38 個 labs
+- **總計完成**: 39 個 labs
 - **Introductory**: 34 個
-- **Intermediate**: 4 個
+- **Intermediate**: 5 個
 - **Advanced**: 0 個
 
 ## 主題分類
@@ -99,6 +100,7 @@
 - GSP650: Build a Resilient, Asynchronous System with Cloud Run and Pub/Sub
 - GSP761: Developing a REST API with Go and Cloud Run
 - GSP762: Creating PDFs with Go and Cloud Run
+- GSP328: Develop Serverless Applications on Cloud Run: Challenge Lab
 
 ### 監控 (Monitoring)
 - GSP089: Cloud Monitoring Qwik Start
