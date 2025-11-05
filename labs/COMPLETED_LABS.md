@@ -67,7 +67,7 @@
 | GSP1328 | Create API Gateways with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1328-Create-API-Gateways-with-Gemini/ |
 | GSP1329 | Code Generation with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1329-Code-Generation-with-Gemini/ |
 | GSP1330 | Unit Testing with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1330-Unit-Testing-with-Gemini/ |
-| GSP1209 | Getting Started with Google Generative AI Using the Gen AI SDK | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1209-Getting-Started-with-Google-Generative-AI-Using-the-Gen-AI-SDK/ |
+| GSP1209 | Getting Started with Google Generative AI Using the Gen AI SDK | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1209-Getting-Started-with-Google-Generative-AI-Using-the-Gen-AI-SDK/ (舊版亦存在於 introductory/Prompt-Design-in-Vertex-AI/GSP1209-getting-started-with-google-generative-ai-using-gen-ai-sdk/) |
 | GSP1210 | Multimodality with Gemini | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1210-Multimodality-with-Gemini/ |
 | GSP1227 | Introduction to Function Calling with Gemini | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1227-Introduction-to-Function-Calling-with-Gemini/ |
 
@@ -181,6 +181,16 @@
 2. 更新統計摘要
 3. 在相關主題分類中添加引用
 4. 確保檔案位置路徑正確
+
+## 重複檔案記錄
+
+以下是已發現的重複檔案情況，需要手動清理：
+
+### GSP1209 重複檔案
+- **當前記錄位置**: intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1209-Getting-Started-with-Google-Generative-AI-Using-the-Gen-AI-SDK/
+- **舊檔案位置**: introductory/Prompt-Design-in-Vertex-AI/GSP1209-getting-started-with-google-generative-ai-using-gen-ai-sdk/
+- **狀態**: 舊檔案目錄仍存在，包含 JLH-gsp1209-cn.md, JLH-gsp1209-en.md, JLH-gsp1209.sh
+- **建議**: 刪除舊的 introductory 目錄中的 GSP1209 檔案，或將其移至 archive 目錄
 
 ## 維護者
 此檔案由自動化腳本維護，人工檢查確保準確性。
