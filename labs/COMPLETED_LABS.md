@@ -36,7 +36,6 @@
 | ARC103 | Analyze BigQuery Data in Connected Sheets: Challenge Lab | 2025-10-15 | introductory/Analyze-BigQuery-Data-in-Connected-Sheets/ARC103-analyze-bigquery-data-connected-sheets-challenge-lab/ |
 | GSP1151 | Generative AI with Vertex AI: Prompt Design | 2025-10-30 | introductory/Prompt-Design-in-Vertex-AI/GSP1151-generative-ai-with-vertex-ai-prompt-design/ |
 | GSP1154 | Get Started with Vertex AI Studio | 2025-10-30 | introductory/Prompt-Design-in-Vertex-AI/GSP1154-get-started-with-vertex-ai-studio/ |
-| GSP1209 | Getting Started with Google Generative AI Using the Gen AI SDK | 2025-10-30 | introductory/Prompt-Design-in-Vertex-AI/GSP1209-getting-started-with-google-generative-ai-using-gen-ai-sdk/ |
 | GSP519 | Prompt Design in Vertex AI: Challenge Lab | 2025-10-31 | introductory/Prompt-Design-in-Vertex-AI/GSP519-prompt-design-in-vertex-ai-challenge-lab/ (See JLH-gsp519-step-by-step-guide.md) |
 | bb-ide-genai-001 | Build an AI Image Recognition app using Gemini on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-001-build-ai-image-recognition-gemini/ |
 | bb-ide-genai-002 | Build an AI Image Generator app using Imagen on Vertex AI | 2025-10-21 | introductory/Build-Real-World-AI-Applications-with-Gemini-and-Imagen/bb-ide-genai-002-build-ai-image-generator-imagen/ |
@@ -68,6 +67,7 @@
 | GSP1328 | Create API Gateways with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1328-Create-API-Gateways-with-Gemini/ |
 | GSP1329 | Code Generation with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1329-Code-Generation-with-Gemini/ |
 | GSP1330 | Unit Testing with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1330-Unit-Testing-with-Gemini/ |
+| GSP1209 | Getting Started with Google Generative AI Using the Gen AI SDK | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1209-Getting-Started-with-Google-Generative-AI-Using-the-Gen-AI-SDK/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
@@ -81,8 +81,8 @@
 ## 統計摘要
 
 - **總計完成**: 43 個 labs
-- **Introductory**: 34 個
-- **Intermediate**: 8 個
+- **Introductory**: 33 個
+- **Intermediate**: 9 個
 - **Advanced**: 0 個
 - **Challenge**: 9 個
 
