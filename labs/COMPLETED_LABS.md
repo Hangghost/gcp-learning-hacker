@@ -67,12 +67,19 @@
 ### Advanced Level
 *目前無已完成的 advanced level labs*
 
+### Challenge Labs
+
+| GSP 編號 | 標題 | 完成日期 | 檔案位置 |
+|----------|------|----------|----------|
+| GSP527 | Kickstarting Application Development with Gemini Code Assist: Challenge Lab | 2025-11-04 | challenge/GSP527-Kickstarting-Application-Development-with-Gemini-Code-Assist-Challenge-Lab/ (See JLH-gsp527-step-by-step-guide.md) |
+
 ## 統計摘要
 
-- **總計完成**: 37 個 labs
+- **總計完成**: 38 個 labs
 - **Introductory**: 34 個
 - **Intermediate**: 3 個
 - **Advanced**: 0 個
+- **Challenge**: 1 個
 
 ## 主題分類
 
@@ -124,6 +131,7 @@
 - GSP1328: Create API Gateways with Gemini
 - GSP1329: Code Generation with Gemini
 - GSP1330: Unit Testing with Gemini
+- GSP527: Kickstarting Application Development with Gemini Code Assist: Challenge Lab
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
