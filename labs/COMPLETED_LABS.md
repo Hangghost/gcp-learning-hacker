@@ -78,15 +78,16 @@
 
 | GSP 編號 | 標題 | 完成日期 | 檔案位置 |
 |----------|------|----------|----------|
+| GSP515 | Explore Generative AI with the Gemini API in Vertex AI: Challenge Lab | 2025-11-05 | challenge/GSP515-Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI-Challenge-Lab/ (See JLH-gsp515-step-by-step-guide.md) |
 | GSP527 | Kickstarting Application Development with Gemini Code Assist: Challenge Lab | 2025-11-04 | challenge/GSP527-Kickstarting-Application-Development-with-Gemini-Code-Assist-Challenge-Lab/ (See JLH-gsp527-step-by-step-guide.md) |
 
 ## 統計摘要
 
-- **總計完成**: 45 個 labs
+- **總計完成**: 46 個 labs
 - **Introductory**: 33 個
 - **Intermediate**: 11 個
 - **Advanced**: 0 個
-- **Challenge**: 9 個
+- **Challenge**: 10 個
 
 ## 主題分類
 
@@ -147,6 +148,7 @@
 - GSP1328: Create API Gateways with Gemini
 - GSP1329: Code Generation with Gemini
 - GSP1330: Unit Testing with Gemini
+- GSP515: Explore Generative AI with the Gemini API in Vertex AI: Challenge Lab
 - GSP527: Kickstarting Application Development with Gemini Code Assist: Challenge Lab
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
