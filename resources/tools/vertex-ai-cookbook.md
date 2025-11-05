@@ -26,6 +26,7 @@ tools
 - GSP1210: Multimodality with Gemini
 - GSP1227: Introduction to Function Calling with Gemini
 - GSP1230: Using Gemini for Multimodal Retail Recommendations
+- GSP1231: Multimodal Retrieval Augmented Generation (RAG) using the Gemini API in Vertex AI
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
 

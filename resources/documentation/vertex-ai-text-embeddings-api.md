@@ -4,7 +4,7 @@
 Documentation on getting text embeddings from Vertex AI models, supporting semantic similarity and retrieval tasks.
 
 ## URL
-https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings
+https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/text-embeddings
 
 ## Category
 documentation
@@ -13,6 +13,7 @@ documentation
 - NLP engineers
 - Search engineers
 - AI researchers
+- RAG system developers
 
 ## Prerequisites
 - Vertex AI API access
@@ -21,6 +22,7 @@ documentation
 
 ## Related Labs
 - GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
+- GSP1231: Multimodal Retrieval Augmented Generation (RAG) using the Gemini API in Vertex AI
 
 ## Notes
 Produces 768-dimensional embeddings by default, with configurable dimensionality for some models.
