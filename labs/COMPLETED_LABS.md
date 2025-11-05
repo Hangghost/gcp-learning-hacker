@@ -57,16 +57,19 @@
 | GSP355 | Create and Manage Cloud SQL for PostgreSQL Instances: Challenge Lab | 2025-10-28 | introductory/Create-and-Manage-Cloud-SQL-for-PostgreSQL-Instances/GSP355-create-and-manage-cloud-sql-postgresql-challenge-lab/ |
 
 ### Intermediate Level
-*目前無已完成的 intermediate level labs*
+
+| GSP 編號 | 標題 | 完成日期 | 檔案位置 |
+|----------|------|----------|----------|
+| GSP644 | Develop Serverless Applications on Cloud Run | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
 
 ## 統計摘要
 
-- **總計完成**: 34 個 labs
+- **總計完成**: 35 個 labs
 - **Introductory**: 34 個
-- **Intermediate**: 0 個
+- **Intermediate**: 1 個
 - **Advanced**: 0 個
 
 ## 主題分類
@@ -87,6 +90,9 @@
 ### Cloud Run Functions
 - GSP080: Cloud Run Functions: Qwik Start - Command Line
 - GSP081: Cloud Run Functions: Qwik Start - Console
+
+### Cloud Run (Serverless Containers)
+- GSP644: Develop Serverless Applications on Cloud Run
 
 ### 監控 (Monitoring)
 - GSP089: Cloud Monitoring Qwik Start

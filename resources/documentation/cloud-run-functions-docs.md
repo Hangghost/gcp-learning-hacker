@@ -20,6 +20,7 @@ documentation
 - Google Cloud Platform account (for hands-on examples)
 
 ## Related Labs
+- GSP644: Develop Serverless Applications on Cloud Run
 - GSP080: Cloud Run Functions: Qwik Start - Command Line
 - GSP081: Cloud Run Functions: Qwik Start - Console
 - GSP924: Cloud Run Functions: Qwik Start - Using the Command Line
