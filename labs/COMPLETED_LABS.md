@@ -71,6 +71,7 @@
 | GSP1210 | Multimodality with Gemini | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1210-Multimodality-with-Gemini/ |
 | GSP1227 | Introduction to Function Calling with Gemini | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1227-Introduction-to-Function-Calling-with-Gemini/ |
 | GSP1230 | Using Gemini for Multimodal Retail Recommendations | 2025-11-05 | intermediate/Inspect-Rich-Documents-with-Gemini-Multimodality-and-Multimodal-RAG/GSP1230/ |
+| GSP520 | Inspect Rich Documents with Gemini Multimodality and Multimodal RAG: Challenge Lab | 2025-11-05 | intermediate/Inspect-Rich-Documents-with-Gemini-Multimodality-and-Multimodal-RAG/GSP520/ |
 | GSP1231 | Multimodal Retrieval Augmented Generation (RAG) using the Gemini API in Vertex AI | 2025-11-05 | intermediate/GSP1231-multimodal-retrieval-augmented-generation-rag-using-gemini-api-vertex-ai/ |
 
 ### Advanced Level
@@ -146,6 +147,7 @@
 - GSP1210: Multimodality with Gemini
 - GSP1227: Introduction to Function Calling with Gemini
 - GSP1230: Using Gemini for Multimodal Retail Recommendations
+- GSP520: Inspect Rich Documents with Gemini Multimodality and Multimodal RAG: Challenge Lab
 - GSP1231: Multimodal Retrieval Augmented Generation (RAG) using the Gemini API in Vertex AI
 - GSP519: Prompt Design in Vertex AI: Challenge Lab
 - GSP119: Speech-to-Text API: Qwik Start
