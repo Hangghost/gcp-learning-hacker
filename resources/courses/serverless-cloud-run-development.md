@@ -25,6 +25,7 @@ courses
 - GSP644: Develop Serverless Applications on Cloud Run
 - GSP650: Build a Resilient, Asynchronous System with Cloud Run and Pub/Sub
 - GSP761: Developing a REST API with Go and Cloud Run
+- GSP762: Creating PDFs with Go and Cloud Run
 - GSP080: Cloud Run Functions: Qwik Start - Command Line
 - GSP081: Cloud Run Functions: Qwik Start - Console
 - GSP2163: Importing Data to a Firestore Database
