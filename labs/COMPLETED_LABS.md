@@ -69,6 +69,7 @@
 | GSP1330 | Unit Testing with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1330-Unit-Testing-with-Gemini/ |
 | GSP1209 | Getting Started with Google Generative AI Using the Gen AI SDK | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1209-Getting-Started-with-Google-Generative-AI-Using-the-Gen-AI-SDK/ |
 | GSP1210 | Multimodality with Gemini | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1210-Multimodality-with-Gemini/ |
+| GSP1227 | Introduction to Function Calling with Gemini | 2025-11-05 | intermediate/Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI/GSP1227-Introduction-to-Function-Calling-with-Gemini/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
@@ -81,9 +82,9 @@
 
 ## 統計摘要
 
-- **總計完成**: 44 個 labs
+- **總計完成**: 45 個 labs
 - **Introductory**: 33 個
-- **Intermediate**: 10 個
+- **Intermediate**: 11 個
 - **Advanced**: 0 個
 - **Challenge**: 9 個
 
@@ -140,6 +141,7 @@
 - GSP1154: Get Started with Vertex AI Studio
 - GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
 - GSP1210: Multimodality with Gemini
+- GSP1227: Introduction to Function Calling with Gemini
 - GSP519: Prompt Design in Vertex AI: Challenge Lab
 - GSP119: Speech-to-Text API: Qwik Start
 - GSP1328: Create API Gateways with Gemini

@@ -21,6 +21,7 @@ documentation
 
 ## Related Labs
 - GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
+- GSP1227: Introduction to Function Calling with Gemini
 
 ## Notes
 Enables Gemini to call external functions and APIs as part of its response generation process.

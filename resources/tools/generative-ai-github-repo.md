@@ -23,6 +23,7 @@ tools
 ## Related Labs
 - GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
 - GSP1210: Multimodality with Gemini
+- GSP1227: Introduction to Function Calling with Gemini
 
 ## Notes
 Repository contents:
