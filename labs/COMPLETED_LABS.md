@@ -65,16 +65,26 @@
 | GSP761 | Developing a REST API with Go and Cloud Run | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
 | GSP762 | Creating PDFs with Go and Cloud Run | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
 | GSP328 | Develop Serverless Applications on Cloud Run: Challenge Lab | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/GSP328/ (See JLH-gsp328-step-by-step-guide.md) |
+| GSP1328 | Create API Gateways with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1328-Create-API-Gateways-with-Gemini/ |
+| GSP1329 | Code Generation with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1329-Code-Generation-with-Gemini/ |
+| GSP1330 | Unit Testing with Gemini | 2025-11-04 | intermediate/Kickstarting-Application-Development-with-Gemini-Code-Assist/GSP1330-Unit-Testing-with-Gemini/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
 
+### Challenge Labs
+
+| GSP 編號 | 標題 | 完成日期 | 檔案位置 |
+|----------|------|----------|----------|
+| GSP527 | Kickstarting Application Development with Gemini Code Assist: Challenge Lab | 2025-11-04 | challenge/GSP527-Kickstarting-Application-Development-with-Gemini-Code-Assist-Challenge-Lab/ (See JLH-gsp527-step-by-step-guide.md) |
+
 ## 統計摘要
 
-- **總計完成**: 39 個 labs
+- **總計完成**: 43 個 labs
 - **Introductory**: 34 個
-- **Intermediate**: 5 個
+- **Intermediate**: 8 個
 - **Advanced**: 0 個
+- **Challenge**: 1 個
 
 ## 主題分類
 
@@ -130,6 +140,10 @@
 - GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
 - GSP519: Prompt Design in Vertex AI: Challenge Lab
 - GSP119: Speech-to-Text API: Qwik Start
+- GSP1328: Create API Gateways with Gemini
+- GSP1329: Code Generation with Gemini
+- GSP1330: Unit Testing with Gemini
+- GSP527: Kickstarting Application Development with Gemini Code Assist: Challenge Lab
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-002: Build an AI Image Generator app using Imagen on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
