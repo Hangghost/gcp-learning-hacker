@@ -1,0 +1,1 @@
+labs/introductory/Prompt-Design-in-Vertex-AI/GSP1209-getting-started-with-google-generative-ai-using-gen-ai-sdk

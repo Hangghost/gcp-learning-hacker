@@ -22,6 +22,7 @@ documentation
 
 ## Related Labs
 - GSP1151: Generative AI with Vertex AI: Prompt Design
+- GSP1230: Using Gemini for Multimodal Retail Recommendations
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
 

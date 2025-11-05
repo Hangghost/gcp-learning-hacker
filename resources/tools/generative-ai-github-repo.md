@@ -24,6 +24,7 @@ tools
 - GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
 - GSP1210: Multimodality with Gemini
 - GSP1227: Introduction to Function Calling with Gemini
+- GSP1230: Using Gemini for Multimodal Retail Recommendations
 
 ## Notes
 Repository contents:
