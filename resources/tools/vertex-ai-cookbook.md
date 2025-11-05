@@ -23,6 +23,7 @@ tools
 ## Related Labs
 - GSP1151: Generative AI with Vertex AI: Prompt Design
 - GSP1209: Getting Started with Google Generative AI Using the Gen AI SDK
+- GSP1210: Multimodality with Gemini
 - bb-ide-genai-001: Build an AI Image Recognition app using Gemini on Vertex AI
 - bb-ide-genai-003: Build an application to send Chat Prompts using the Gemini model
 

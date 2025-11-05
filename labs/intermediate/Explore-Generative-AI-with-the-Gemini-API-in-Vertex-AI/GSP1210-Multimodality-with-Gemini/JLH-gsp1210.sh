@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# GSP1209 - Getting Started with Google Generative AI Using the Gen AI SDK
-# https://www.skills.google/course_templates/959/labs/592557
+# GSP1210 - Multimodality with Gemini
+# https://www.skills.google/paths/1284/course_templates/981/labs/597908
 #
-# This script provides automation for the GSP1209 lab setup.
+# This script provides automation for the GSP1210 lab setup.
 # Note: The main lab work is performed in Vertex AI Workbench notebooks.
 
 set -e  # Exit on any error
@@ -69,11 +69,8 @@ enable_apis() {
     # Enable Vertex AI API
     gcloud services enable aiplatform.googleapis.com
 
-    # Enable Cloud Storage API (for batch predictions)
+    # Enable Cloud Storage API (for multimodal content)
     gcloud services enable storage.googleapis.com
-
-    # Enable BigQuery API (optional, for batch predictions)
-    gcloud services enable bigquery.googleapis.com
 
     print_success "APIs enabled successfully"
 }
@@ -100,7 +97,7 @@ check_workbench_instance() {
     fi
 }
 
-# Function to set up authentication for Vertex AI
+# Function to setup authentication for Vertex AI
 setup_vertex_ai_auth() {
     print_info "Setting up authentication for Vertex AI..."
 
@@ -121,8 +118,8 @@ setup_vertex_ai_auth() {
     print_success "Vertex AI authentication setup complete"
 }
 
-# Function to create a Cloud Storage bucket for batch predictions (if needed)
-create_batch_bucket() {
+# Function to create a Cloud Storage bucket for multimodal content (if needed)
+create_multimodal_bucket() {
     local bucket_name="$1"
     local region="${2:-us-central1}"
 
@@ -132,10 +129,10 @@ create_batch_bucket() {
         project_id=$(gcloud config get-value project)
         local timestamp
         timestamp=$(date +%s)
-        bucket_name="${project_id}-genai-batch-${timestamp}"
+        bucket_name="${project_id}-gemini-multimodal-${timestamp}"
     fi
 
-    print_info "Creating Cloud Storage bucket for batch predictions: gs://$bucket_name"
+    print_info "Creating Cloud Storage bucket for multimodal content: gs://$bucket_name"
 
     if gsutil ls -b "gs://$bucket_name" &>/dev/null; then
         print_warning "Bucket gs://$bucket_name already exists"
@@ -152,37 +149,48 @@ display_lab_info() {
     cat << 'EOF'
 
 ================================================================================
- GSP1209 - Getting Started with Google Generative AI Using the Gen AI SDK
+ GSP1210 - Multimodality with Gemini
 ================================================================================
 
 Lab Overview:
-The Google Gen AI SDK provides a unified interface to Google's generative AI
-API services. This lab explores the SDK through Vertex AI Workbench notebooks.
+This lab introduces Gemini, a family of multimodal generative AI models.
+You explore how Gemini Flash understands and generates responses based on
+text, images, and video through hands-on tasks in Vertex AI.
 
-Prerequisites:
-- Basic Python programming knowledge
-- General API concepts
-- Access to Vertex AI Workbench
+Key Multimodal Capabilities:
+- Image Analysis: Object detection, UI understanding, diagram interpretation
+- Video Processing: Description generation, tag extraction, Q&A
+- Audio Understanding: Long-context audio processing
+- Cross-Modal Reasoning: Combining multiple modalities
+- Codebase Analysis: Understanding code across files
+- Entity Relationship Diagrams: ER diagram comprehension and code generation
+- Image Comparison: Similarity and difference analysis
 
 Main Tasks:
 1. Open notebook in Vertex AI Workbench
 2. Set up the notebook environment
-3. Interact with Gemini models
-4. Configure model parameters and safety filters
-5. Manage model interactions
-6. Use advanced features (function calling, context caching, batch prediction, embeddings)
+3. Image understanding across multiple images
+4. Generating video descriptions
+5. Audio understanding
+6. Reasoning across codebases
+7. Video and audio understanding
+8. All modalities at once
+9. Generating recommendations from images
+10. Understanding technical diagrams
+11. Comparing images for similarities/differences
 
 Important Notes:
 - The main lab work is performed in Jupyter notebooks
 - This script only handles basic GCP setup
 - Follow the notebook instructions carefully
-- Some operations may take time (batch predictions up to 10 minutes)
+- Gemini supports interleaving of text, images, video, and audio
+- Each task demonstrates different multimodal capabilities
 
 Next Steps:
 1. Open Vertex AI Workbench instance in Google Cloud Console
 2. Launch JupyterLab
 3. Open the lab notebook
-4. Follow the step-by-step instructions
+4. Follow the step-by-step instructions for each multimodal task
 
 ================================================================================
 
@@ -247,7 +255,7 @@ main() {
                 echo "  --project-id PROJECT_ID    GCP Project ID (required)"
                 echo "  --region REGION           GCP Region (default: us-central1)"
                 echo "  --workbench-instance NAME Vertex AI Workbench instance name"
-                echo "  --create-bucket           Create a Cloud Storage bucket for batch predictions"
+                echo "  --create-bucket           Create a Cloud Storage bucket for multimodal content"
                 echo "  --cleanup                 Run cleanup process"
                 echo "  --help                    Show this help message"
                 exit 0
@@ -276,7 +284,7 @@ main() {
     fi
 
     # Run setup steps
-    print_info "Starting GSP1209 lab setup..."
+    print_info "Starting GSP1210 lab setup..."
 
     check_gcloud
     set_project "$project_id"
@@ -290,24 +298,26 @@ main() {
 
     setup_vertex_ai_auth
 
-    local batch_bucket=""
+    local multimodal_bucket=""
     if [ "$create_bucket" = true ]; then
-        batch_bucket=$(create_batch_bucket "" "$region")
-        print_info "Batch prediction bucket: $batch_bucket"
+        multimodal_bucket=$(create_multimodal_bucket "" "$region")
+        print_info "Multimodal content bucket: $multimodal_bucket"
     fi
 
-    print_success "GSP1209 lab setup complete!"
+    print_success "GSP1210 lab setup complete!"
     echo ""
     print_info "Next steps:"
     echo "1. Go to Google Cloud Console > Vertex AI > Workbench"
     echo "2. Open your Workbench instance"
     echo "3. Launch JupyterLab"
     echo "4. Open the lab notebook and follow the instructions"
-    if [ -n "$batch_bucket" ]; then
-        echo "5. Use bucket '$batch_bucket' for batch prediction tasks if needed"
+    echo "5. Complete each multimodal task in sequence"
+    if [ -n "$multimodal_bucket" ]; then
+        echo "6. Use bucket '$multimodal_bucket' for multimodal content if needed"
     fi
     echo ""
-    print_warning "Note: The main lab work is done in the Jupyter notebook environment."
+    print_warning "Note: This lab demonstrates Gemini's multimodal capabilities through various notebook tasks."
+    echo "      Make sure to run through all the sections to experience the full range of features."
 }
 
 # Run main function with all arguments
