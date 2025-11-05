@@ -62,15 +62,16 @@
 |----------|------|----------|----------|
 | GSP644 | Develop Serverless Applications on Cloud Run | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
 | GSP650 | Build a Resilient, Asynchronous System with Cloud Run and Pub/Sub | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
+| GSP761 | Developing a REST API with Go and Cloud Run | 2025-11-05 | intermediate/Develop-Serverless-Applications-on-Cloud-Run/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
 
 ## 統計摘要
 
-- **總計完成**: 36 個 labs
+- **總計完成**: 37 個 labs
 - **Introductory**: 34 個
-- **Intermediate**: 2 個
+- **Intermediate**: 3 個
 - **Advanced**: 0 個
 
 ## 主題分類
@@ -95,6 +96,7 @@
 ### Cloud Run (Serverless Containers)
 - GSP644: Develop Serverless Applications on Cloud Run
 - GSP650: Build a Resilient, Asynchronous System with Cloud Run and Pub/Sub
+- GSP761: Developing a REST API with Go and Cloud Run
 
 ### 監控 (Monitoring)
 - GSP089: Cloud Monitoring Qwik Start
