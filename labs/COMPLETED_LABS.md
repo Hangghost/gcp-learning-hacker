@@ -75,7 +75,7 @@
 | GSP1231 | Multimodal Retrieval Augmented Generation (RAG) using the Gemini API in Vertex AI | 2025-11-05 | intermediate/GSP1231-multimodal-retrieval-augmented-generation-rag-using-gemini-api-vertex-ai/ |
 | GSP1246 | Analyze Customer Reviews with Gemini Using SQL | 2025-11-07 | intermediate/Implement-Multimodal-Vector-Search-with-BigQuery/GSP1246-Analyze-Customer-Reviews-with-Gemini-Using-SQL/ |
 | GSP1258 | Develop Code with Gemini in BigQuery | 2025-11-07 | intermediate/Implement-Multimodal-Vector-Search-with-BigQuery/GSP1258-Develop-Code-with-Gemini-in-BigQuery/ |
-| GSP1289 | Create a RAG Application with BigQuery | 2025-11-07 | intermediate/Implement-Multimodal-Vector-Search-with-BigQuery/GSP1289-Create-a-RAG-Application-with-BigQuery/ (See JLH-gsp1289-step-by-step-guide.md) |
+| GSP1289 | Create a RAG Application with BigQuery | 2025-11-07 | intermediate/Implement-Multimodal-Vector-Search-with-BigQuery/GSP1289-Create-a-RAG-Application-with-BigQuery/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
