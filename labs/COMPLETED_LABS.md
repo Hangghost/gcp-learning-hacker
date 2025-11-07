@@ -73,6 +73,8 @@
 | GSP1230 | Using Gemini for Multimodal Retail Recommendations | 2025-11-05 | intermediate/Inspect-Rich-Documents-with-Gemini-Multimodality-and-Multimodal-RAG/GSP1230/ |
 | GSP520 | Inspect Rich Documents with Gemini Multimodality and Multimodal RAG: Challenge Lab | 2025-11-05 | intermediate/Inspect-Rich-Documents-with-Gemini-Multimodality-and-Multimodal-RAG/GSP520/ |
 | GSP1231 | Multimodal Retrieval Augmented Generation (RAG) using the Gemini API in Vertex AI | 2025-11-05 | intermediate/GSP1231-multimodal-retrieval-augmented-generation-rag-using-gemini-api-vertex-ai/ |
+| GSP1246 | Analyze Customer Reviews with Gemini Using SQL | 2025-11-07 | intermediate/Implement-Multimodal-Vector-Search-with-BigQuery/GSP1246-Analyze-Customer-Reviews-with-Gemini-Using-SQL/ |
+| GSP1258 | Develop Code with Gemini in BigQuery | 2025-11-07 | intermediate/Implement-Multimodal-Vector-Search-with-BigQuery/GSP1258-Develop-Code-with-Gemini-in-BigQuery/ |
 
 ### Advanced Level
 *目前無已完成的 advanced level labs*
@@ -86,9 +88,9 @@
 
 ## 統計摘要
 
-- **總計完成**: 48 個 labs
+- **總計完成**: 50 個 labs
 - **Introductory**: 33 個
-- **Intermediate**: 13 個
+- **Intermediate**: 15 個
 - **Advanced**: 0 個
 - **Challenge**: 10 個
 
@@ -149,6 +151,8 @@
 - GSP1230: Using Gemini for Multimodal Retail Recommendations
 - GSP520: Inspect Rich Documents with Gemini Multimodality and Multimodal RAG: Challenge Lab
 - GSP1231: Multimodal Retrieval Augmented Generation (RAG) using the Gemini API in Vertex AI
+- GSP1246: Analyze Customer Reviews with Gemini Using SQL
+- GSP1258: Develop Code with Gemini in BigQuery
 - GSP519: Prompt Design in Vertex AI: Challenge Lab
 - GSP119: Speech-to-Text API: Qwik Start
 - GSP1328: Create API Gateways with Gemini
