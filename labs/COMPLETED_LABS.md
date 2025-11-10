@@ -85,15 +85,16 @@
 | GSP 編號 | 標題 | 完成日期 | 檔案位置 |
 |----------|------|----------|----------|
 | GSP515 | Explore Generative AI with the Gemini API in Vertex AI: Challenge Lab | 2025-11-05 | challenge/GSP515-Explore-Generative-AI-with-the-Gemini-API-in-Vertex-AI-Challenge-Lab/ (See JLH-gsp515-step-by-step-guide.md) |
+| GSP523 | Implement Multimodal Vector Search with BigQuery: Challenge Lab | 2025-11-07 | intermediate/Implement-Multimodal-Vector-Search-with-BigQuery/GSP523-Implement-Multimodal-Vector-Search-with-BigQuery-Challenge-Lab/ (See JLH-gsp523-step-by-step-guide.md) |
 | GSP527 | Kickstarting Application Development with Gemini Code Assist: Challenge Lab | 2025-11-04 | challenge/GSP527-Kickstarting-Application-Development-with-Gemini-Code-Assist-Challenge-Lab/ (See JLH-gsp527-step-by-step-guide.md) |
 
 ## 統計摘要
 
-- **總計完成**: 51 個 labs
+- **總計完成**: 52 個 labs
 - **Introductory**: 33 個
 - **Intermediate**: 16 個
 - **Advanced**: 0 個
-- **Challenge**: 10 個
+- **Challenge**: 11 個
 
 ## 主題分類
 
@@ -155,6 +156,7 @@
 - GSP1246: Analyze Customer Reviews with Gemini Using SQL
 - GSP1258: Develop Code with Gemini in BigQuery
 - GSP1289: Create a RAG Application with BigQuery
+- GSP523: Implement Multimodal Vector Search with BigQuery: Challenge Lab
 - GSP519: Prompt Design in Vertex AI: Challenge Lab
 - GSP119: Speech-to-Text API: Qwik Start
 - GSP1328: Create API Gateways with Gemini
