@@ -54,11 +54,7 @@ Finally, define the resource names we are about to create:
 
 ```bash
 # Define resource names
-export BACKEND_BUCKET_NAME=news-backend-bucket
-export IP_NAME=news-cdn-ip
-export URL_MAP_NAME=news-url-map
-export HTTP_PROXY_NAME=news-http-proxy
-export FORWARDING_RULE_NAME=news-forwarding-rule
+export BACKEND_BUCKET_NAME=news-backend-bucket && export IP_NAME=news-cdn-ip && export URL_MAP_NAME=news-url-map && export HTTP_PROXY_NAME=news-http-proxy && export FORWARDING_RULE_NAME=news-forwarding-rule
 ```
 
 **Explanation**: These are the resource names we will create manually. In an empty environment, using a consistent naming convention (like the `news-` prefix) makes management clearer.
